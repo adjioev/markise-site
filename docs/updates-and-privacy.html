@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Updates and privacy · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html' aria-current='page'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='updates-and-privacy'>Updates and privacy</h1>
+<p>Markise works offline. Your documents, settings, drafts and logs stay on your computer. There
+is no account, no telemetry and no analytics. Markise itself makes only one kind of network
+request: the update checks described here, and only when you agree to them or ask for one.</p>
+<p>Two things you start yourself can reach the network through other programs:</p>
+<ul>
+<li><strong>Links:</strong> <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>-clicking a web link opens it in your browser.</li>
+<li><strong>Pandoc exports:</strong> Markise passes remote image addresses (<code>https://…</code>) to Pandoc unchanged,
+and Pandoc may download them for some formats (for example EPUB or Word). See
+<a href="export.html#pandoc-formats">Export</a>.</li>
+</ul>
+<h2 id='automatic-update-checks-are-opt-in'>Automatic update checks are opt-in</h2>
+<p>On first launch, a small card in the corner asks <strong>&quot;Check for updates automatically?&quot;</strong>:</p>
+<ul>
+<li><strong>Check Automatically</strong> turns automatic checks on.</li>
+<li><strong>Not Now</strong> leaves them off. Until you answer, they stay off; if you close Markise without
+answering, it asks again at the next launch.</li>
+</ul>
+<p>Change your answer any time in <strong>Preferences → General → Updates → Check for updates
+automatically</strong>. With it off, Markise never contacts the network on its own.</p>
+<p>With it on, Markise checks at launch, at most once a day. If you are offline, it tries again at
+the next launch. An automatic check stays silent unless a newer version exists.</p>
+<h2 id='manual-checks'>Manual checks</h2>
+<p><strong>Check for Updates…</strong> (on macOS in the <strong>Markise</strong> menu, on Windows and Linux in the <strong>Help</strong>
+menu) checks right away, even with automatic checks off, and always reports the result: up to
+date, a newer version, or the error (for example offline or rate-limited).</p>
+<h2 id='what-a-check-sends'>What a check sends</h2>
+<p>A check is an HTTPS <code>GET</code> request to GitHub&#39;s public API for this repository&#39;s releases:</p>
+<ul>
+<li>A <strong>stable</strong> build requests <code>https://api.github.com/repos/adjioev/markise/releases/latest</code>.</li>
+<li>A <strong>beta</strong> build, such as 0.1.0-beta.1, requests
+<code>https://api.github.com/repos/adjioev/markise/releases?per_page=20</code> <strong>and</strong> the address
+above, so it finds both newer betas and newer stable releases.</li>
+</ul>
+<p>Each request carries the headers <code>User-Agent: Markise/&lt;version&gt;</code> and
+<code>Accept: application/vnd.github+json</code> — no cookies, tokens, identifiers or information about
+your documents. Like any web request, it lets <strong>GitHub see your IP address and the Markise
+version</strong>; GitHub&#39;s own privacy statement applies to that. Markise sends nothing anywhere else.</p>
+<h2 id='when-an-update-is-available'>When an update is available</h2>
+<p>A notice says &quot;Markise X.Y.Z is available&quot; with <strong>What&#39;s new</strong> and <strong>Download</strong> links. Both open
+the release page on github.com in your browser; Markise only opens release pages of this
+project. You download and install the new version yourself: <strong>Markise never downloads or
+installs updates by itself.</strong> The × button hides the notice for that version.</p>
+<p>Betas are offered newer betas and newer stable releases; stable versions are offered stable
+releases only.</p>
+<h2 id='turning-checks-off-completely'>Turning checks off completely</h2>
+<p>Besides the preference, the environment variable <code>MARKISE_UPDATE_CHECK=0</code> turns update checks
+off for a release build, including the first-launch question. Builds you compile yourself in
+debug mode never check unless <code>MARKISE_UPDATE_CHECK=1</code> is set.</p>
+<h2 id='what-stays-local'>What stays local</h2>
+<ul>
+<li><p><strong>Log file</strong> <code>markise.log</code>: start lines (version, operating system), renderer information,
+fatal errors and crash locations with a backtrace — never document contents. It is kept under
+1 MiB, with the previous part in <code>markise.log.1</code>.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>System</th><th>Log folder</th></tr>
+</thead>
+<tbody>
+<tr><td>macOS</td><td><code>~/Library/Logs/Markise/</code></td></tr>
+<tr><td>Windows</td><td><code>%LOCALAPPDATA%\Markise\logs\</code></td></tr>
+<tr><td>Linux</td><td><code>~/.local/state/markise/logs/</code> (or <code>$XDG_STATE_HOME/markise/logs/</code>)</td></tr>
+</tbody>
+</table></figure>
+</li>
+<li><p><strong>Settings, themes and draft backups</strong> live in Markise&#39;s configuration folder (see
+<a href="settings.html#the-settings-file">Settings</a> and <a href="saving-and-recovery.html">Saving and recovery</a>).</p>
+</li>
+<li><p><strong>Recent files</strong> are remembered locally unless you turn that off in <strong>Preferences → Files &amp;
+Images</strong>.</p>
+</li>
+</ul>
+<p>Markise does not download remote images in your documents (<code>https://…</code>): not to show them,
+and not in its own HTML, PDF and PNG exports (HTML keeps the address as written). Pandoc
+exports are the exception described at the top of this page.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/updates-and-privacy.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

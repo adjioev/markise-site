@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>FAQ and troubleshooting · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html' aria-current='page'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='faq-and-troubleshooting'>FAQ and troubleshooting</h1>
+<h2 id='known-limitations'>Known limitations</h2>
+<p>The beta covers everyday writing, but some things are not there yet:</p>
+<ul>
+<li><strong>Signing:</strong> the macOS and Windows builds are not code-signed; macOS builds are not notarized
+(<a href="getting-started.html#install">Getting started</a>).</li>
+<li><strong>Documents and files:</strong> one document per window, no tabs; no search across a folder; links are
+not updated when a file is renamed.</li>
+<li><strong>Editing:</strong> paste inserts plain text (rich text is not converted to Markdown); the text being
+composed with an input method (IME) is not shown inline until it is committed; there is no
+spell checker.</li>
+<li><strong>Wikilinks:</strong> embeds (<code>![[note]]</code>) and block references (<code>#^id</code>) are not supported.</li>
+<li><strong>Diagrams:</strong> of the Mermaid diagram types, only flowcharts and sequence diagrams are drawn.</li>
+<li><strong>Export:</strong> no export settings; PDF and PNG show math and diagrams as source text and use
+local images only; the Pandoc path cannot be set by hand (<a href="export.html#limitations-in-the-beta">Export</a>).</li>
+<li><strong>Themes:</strong> a subset of CSS; web fonts in themes are not loaded (<a href="themes.html#what-compatible-means">Themes</a>).</li>
+<li><strong>Shortcuts:</strong> changed in <code>settings.json</code> only; file and view commands cannot be rebound
+(<a href="shortcuts.html#change-a-shortcut">Keyboard shortcuts</a>).</li>
+<li><strong>Updates:</strong> Markise tells you about a new version but never installs it.</li>
+<li><strong>Linux:</strong> a tarball only; no AppImage, .deb or Flatpak.</li>
+</ul>
+<h2 id='is-markise-free-where-is-the-source'>Is Markise free? Where is the source?</h2>
+<p>Markise is free and open source, dual-licensed under MIT or Apache-2.0. The source, issues and
+releases are on <a href="https://github.com/adjioev/markise">GitHub</a>.</p>
+<h2 id='does-markise-change-my-files'>Does Markise change my files?</h2>
+<p>Only when you edit and save. Opening a file and saving it without edits writes it back byte for
+byte. Markise stores nothing inside your notes folder except what you create there (notes, pasted
+images), and never writes into an Obsidian vault&#39;s <code>.obsidian/</code> folder.</p>
+<h2 id='can-i-use-markise-and-obsidian-on-the-same-vault'>Can I use Markise and Obsidian on the same vault?</h2>
+<p>Yes. Markise reads the vault&#39;s link and attachment settings and leaves everything else alone;
+see <a href="folders-and-vaults.html#obsidian-vaults">Folders and vaults</a>. Obsidian plugins, canvases and
+embeds are not supported in Markise.</p>
+<h2 id='does-it-work-with-themes-written-for-typora'>Does it work with themes written for Typora?</h2>
+<p>Many community CSS themes can be imported, within the supported CSS subset; the Theme Report
+shows what was not applied. See <a href="themes.html#import-a-css-theme">Themes</a>.</p>
+<h2 id='installation-troubleshooting'>Installation troubleshooting</h2>
+<h3 id='macos-says-markise-is-damaged-or-cannot-be-opened'>macOS says Markise is damaged or cannot be opened</h3>
+<p>First follow the <strong>Open Anyway</strong> steps in <a href="getting-started.html#macos">Getting started</a>. If macOS
+still refuses — for example it reports that the app &quot;is damaged&quot; and offers no <strong>Open Anyway</strong>
+button — the download&#39;s quarantine flag can be removed in Terminal. Do this only for a copy you
+downloaded from the <a href="https://github.com/adjioev/markise/releases">official releases page</a>
+(ideally after checking it against <code>SHA256SUMS</code>):</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>xattr</span><span class='cm-variable'> -dr</span> com.apple.quarantine /Applications/Markise.app
+</code></pre>
+<h3 id='windows-smartscreen-blocks-the-app'>Windows: SmartScreen blocks the app</h3>
+<p>Click <strong>More info</strong>, then <strong>Run anyway</strong>. If there is no <strong>Run anyway</strong> button, your
+organisation&#39;s policy may block unsigned programs; ask your administrator.</p>
+<h3 id='windows-or-linux-the-window-does-not-open-or-stays-blank'>Windows or Linux: the window does not open or stays blank</h3>
+<p>Markise needs a graphics driver with OpenGL 3 (or OpenGL ES 3 on Linux). Update the graphics
+driver, then start Markise from a terminal (<code>markise.exe FILE.md</code> or <code>./markise FILE.md</code>) to see
+its messages, and check the log file (below).</p>
+<h3 id='linux-missing-libraries'>Linux: missing libraries</h3>
+<p>Install the OpenGL/EGL, libxkbcommon and Wayland or X11 client libraries from your
+distribution. The build needs glibc 2.35 or later.</p>
+<h2 id='something-went-wrong'>Something went wrong</h2>
+<h3 id='where-is-the-log-file'>Where is the log file?</h3>
+<p><code>markise.log</code> holds start lines, crash locations and fatal errors — never document contents:</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>System</th><th>Log folder</th></tr>
+</thead>
+<tbody>
+<tr><td>macOS</td><td><code>~/Library/Logs/Markise/</code></td></tr>
+<tr><td>Windows</td><td><code>%LOCALAPPDATA%\Markise\logs\</code></td></tr>
+<tr><td>Linux</td><td><code>~/.local/state/markise/logs/</code> (or <code>$XDG_STATE_HOME/markise/logs/</code>)</td></tr>
+</tbody>
+</table></figure>
+<h3 id='i-lost-unsaved-changes-after-a-crash'>I lost unsaved changes after a crash</h3>
+<p>Start Markise again: the <strong>Recover unsaved drafts</strong> window lists the drafts it kept, also
+available from <strong>File → Recover Unsaved Drafts…</strong>. See
+<a href="saving-and-recovery.html">Saving and recovery</a>.</p>
+<h3 id='how-do-i-reset-all-settings'>How do I reset all settings?</h3>
+<p>Use <strong>Reset to Defaults</strong> in each Preferences section, or quit Markise and delete
+<code>settings.json</code> (<a href="settings.html#the-settings-file">Settings</a>).</p>
+<h2 id='reporting-a-bug'>Reporting a bug</h2>
+<p>Open an issue at <a href="https://github.com/adjioev/markise/issues">github.com/adjioev/markise/issues</a>
+with:</p>
+<ol>
+<li>the Markise version (<strong>About Markise</strong>) and your operating system and version;</li>
+<li>what you did, what you expected, and what happened;</li>
+<li>if possible, a small Markdown file that shows the problem — remove anything private first;</li>
+<li>for a crash, the log file <code>markise.log</code>.</li>
+</ol>
+<p>Ideas and feature requests are welcome there too.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/faq.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Export · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html' aria-current='page'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='export'>Export</h1>
+<p><strong>File → Export</strong> saves the current document in another format. Choose a format, pick a file
+name, and the export runs in the background: the status bar shows the progress with a
+<strong>Cancel</strong> button, then the result.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Format</th><th>Menu item</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>HTML</td><td><strong>HTML</strong></td><td>One self-contained file styled with the current theme. Local PNG, JPEG, GIF and WebP images are embedded (up to 10 MiB each, 64 MiB per export); math and diagrams are SVG.</td></tr>
+<tr><td>HTML without styles</td><td><strong>HTML (without styles)</strong></td><td>Plain semantic HTML with no stylesheet; image paths are rewritten relative to the exported file.</td></tr>
+<tr><td>PDF</td><td><strong>PDF</strong></td><td>Paginated, selectable text, working links, a document outline (bookmarks) and tagged PDF.</td></tr>
+<tr><td>PNG</td><td><strong>Image (PNG)</strong></td><td>A picture of the whole document; very tall documents are split into several PNG files.</td></tr>
+<tr><td>Word, OpenDocument, RTF, EPUB, LaTeX, MediaWiki, reStructuredText, Textile, OPML</td><td><strong>Other Formats via Pandoc</strong></td><td>Needs Pandoc, see below.</td></tr>
+</tbody>
+</table></figure>
+<p><strong>Export with Previous</strong> repeats the last export of the session and asks for the file name with
+the previous one filled in; <strong>Export and Overwrite with Previous</strong> writes to the same file again
+without asking (it confirms once per document and destination). <strong>Include Comments</strong> decides
+whether review comments are kept (see
+<a href="comments-and-suggestions.html#in-exports">Comments and suggestions</a>).</p>
+<p>From the command line, <code>markise-cli html FILE.md -o FILE.html</code> writes the same kind of HTML.</p>
+<h2 id='pdf-page-setup'>PDF page setup</h2>
+<p>The PDF page is A4 with 18 mm top and bottom and 16 mm side margins unless the document&#39;s front
+matter says otherwise:</p>
+<pre class='md-fences md-end-block' lang='yaml'><code class='language-yaml cm-s-inner' lang='yaml'>---
+<span class='cm-tag'>title</span><span class='cm-bracket'>:</span> <span class='cm-string'>Passage plan</span>
+<span class='cm-tag'>papersize</span><span class='cm-bracket'>:</span> <span class='cm-string'>letter</span>        <span class='cm-comment'># a3, a4, a5, b5, letter, legal, tabloid, or &quot;210mm 297mm&quot;</span>
+<span class='cm-tag'>margin</span><span class='cm-bracket'>:</span> <span class='cm-string'>20mm 15mm</span>        <span class='cm-comment'># 1 to 4 values, in CSS order; or margin-top, margin-left, …</span>
+<span class='cm-tag'>header</span><span class='cm-bracket'>:</span> <span class='cm-string'>${title}</span>
+<span class='cm-tag'>footer</span><span class='cm-bracket'>:</span> <span class='cm-string'>Page ${pageNo} of ${totalPages}</span>
+---
+</code></pre>
+<p>Lengths accept <code>mm</code>, <code>cm</code>, <code>in</code>, <code>pt</code> and <code>px</code>. Header and footer templates can use
+<code>${pageNo}</code>, <code>${totalPages}</code>, <code>${title}</code>, <code>${author}</code>, <code>${today}</code>, <code>${currentFileName}</code> and any
+other front-matter key.</p>
+<h2 id='pandoc-formats'>Pandoc formats</h2>
+<p>The formats under <strong>Other Formats via Pandoc</strong> are produced by <a href="https://pandoc.org">Pandoc</a>,
+which you install separately (version <strong>2.10 or later</strong>). Markise finds it on your <code>PATH</code> and in
+the usual install folders (for example <code>/opt/homebrew/bin</code>, <code>/usr/local/bin</code>, <code>~/.local/bin</code>,
+and on Windows <code>%LOCALAPPDATA%\Pandoc</code> or <code>C:\Program Files\Pandoc</code>). If Pandoc is not found,
+the export fails with a message and a link to the Pandoc installation page. A Pandoc export is
+stopped after 120 seconds.</p>
+<p>Local images are handed to Pandoc as file paths. Remote images (<code>https://…</code>) are passed on as
+written, and Pandoc may download them while it builds the file (for example for EPUB or Word);
+that request comes from Pandoc, not from Markise.</p>
+<h2 id='limitations-in-the-beta'>Limitations in the beta</h2>
+<ul>
+<li><strong>No export settings.</strong> Each format uses its built-in options; <strong>Preferences → Export</strong> has no
+settings yet, and the Pandoc path cannot be set by hand — install Pandoc where Markise looks
+for it.</li>
+<li><strong>PDF and PNG show math and diagrams as source text.</strong> Use HTML export to get them drawn.</li>
+<li><strong>PDF and PNG use local images only.</strong> Remote images (<code>https://…</code>) are not downloaded and
+<code>data:</code> images are not supported; a placeholder with the image&#39;s alt text is drawn instead.</li>
+<li>Fonts bundled with an imported CSS theme are not used in PDF and PNG export (installed system
+fonts are).</li>
+<li>Wikilinks become relative links in HTML; in PDF, PNG and Pandoc formats only their text is
+kept.</li>
+<li>Export is unavailable while a large file is still loading (see <a href="large-files.html">Large files</a>).</li>
+<li>Very large HTML exports (over 200 MB, usually from many <code>[TOC]</code> blocks) ask before writing.</li>
+</ul>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/export.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Editing · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html' aria-current='page'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='editing'>Editing</h1>
+<h2 id='three-views'>Three views</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>View</th><th>How</th><th>What you see</th></tr>
+</thead>
+<tbody>
+<tr><td>Rendered</td><td><strong>View → Rendered</strong></td><td>The formatted page. Click anywhere and type; the Markdown markers around the caret are revealed while you edit.</td></tr>
+<tr><td>Source Code Mode</td><td><strong>View → Source Code Mode</strong>, <kbd>Cmd+/</kbd> (<kbd>Ctrl+/</kbd>)</td><td>The plain Markdown text with syntax colouring.</td></tr>
+<tr><td>Side by Side</td><td><strong>View → Side by Side</strong>, <kbd>Ctrl+Cmd+/</kbd> (<kbd>Ctrl+Alt+/</kbd>)</td><td>The source on the left, the rendered page on the right; both scroll together. You type in the source; the rendered side is read-only.</td></tr>
+</tbody>
+</table></figure>
+<p>The shortcut toggles a view on and off; choosing it from the menu always switches to it. Undo
+and redo work across views: an edit made in the source is one undo step in the rendered view.</p>
+<p>Source Code Mode has its own preferences (line numbers, soft wrap, current-line highlight,
+visible whitespace, font size): see <a href="settings.html#source-mode">Settings</a>.</p>
+<h2 id='formatting'>Formatting</h2>
+<p>Select text and use the <strong>Format</strong> menu or a shortcut, or type the Markdown yourself — writing
+<code>**word**</code> turns bold as soon as you close it.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Format</th><th>macOS</th><th>Windows and Linux</th><th>Markdown</th></tr>
+</thead>
+<tbody>
+<tr><td>Strong (bold)</td><td><kbd>Cmd+B</kbd></td><td><kbd>Ctrl+B</kbd></td><td><code>**text**</code></td></tr>
+<tr><td>Emphasis (italic)</td><td><kbd>Cmd+I</kbd></td><td><kbd>Ctrl+I</kbd></td><td><code>*text*</code></td></tr>
+<tr><td>Underline</td><td><kbd>Cmd+U</kbd></td><td><kbd>Ctrl+U</kbd></td><td><code>&lt;u&gt;text&lt;/u&gt;</code></td></tr>
+<tr><td>Code</td><td><kbd>Ctrl+`</kbd></td><td><kbd>Ctrl+Shift+`</kbd></td><td><code>`code`</code></td></tr>
+<tr><td>Strike</td><td><kbd>Ctrl+Shift+`</kbd></td><td><kbd>Alt+Shift+5</kbd></td><td><code>~~text~~</code></td></tr>
+<tr><td>Hyperlink</td><td><kbd>Cmd+K</kbd></td><td><kbd>Ctrl+K</kbd></td><td><code>[text](url)</code></td></tr>
+<tr><td>Image</td><td><kbd>Ctrl+Cmd+I</kbd></td><td><kbd>Ctrl+Shift+I</kbd></td><td><code>![alt](path)</code></td></tr>
+<tr><td>Clear Format</td><td><kbd>Cmd+\</kbd></td><td><kbd>Ctrl+\</kbd></td><td></td></tr>
+</tbody>
+</table></figure>
+<p>The formatting toolbar above the page offers the same commands; <strong>View → Toolbar</strong> hides it.</p>
+<h2 id='headings-lists-and-quotes'>Headings, lists and quotes</h2>
+<ul>
+<li><strong>Paragraph → Heading 1–6</strong>: <kbd>Cmd+1</kbd> … <kbd>Cmd+6</kbd>; <strong>Paragraph</strong>:
+<kbd>Cmd+0</kbd>. Or start a line with <code>#</code>, <code>##</code>, … and a space.</li>
+<li>Start a line with <code>- </code> for a bullet list, <code>1. </code> for a numbered list, <code>- [ ] </code> for a task, <code>&gt; </code>
+for a quote. The <strong>Paragraph</strong> menu has the same commands.</li>
+<li><kbd>Tab</kbd> indents a list item, <kbd>Shift+Tab</kbd> outdents it, and <kbd>Enter</kbd> on an
+empty item ends the list. Click a task box to tick it.</li>
+<li><kbd>Alt+↑</kbd> / <kbd>Alt+↓</kbd> move the current block or list item up or down.</li>
+</ul>
+<h2 id='tables'>Tables</h2>
+<p>Click into a cell and type; <kbd>Tab</kbd> moves to the next cell. <strong>Paragraph → Table</strong> adds and
+deletes rows and columns, moves them, and aligns a column. <strong>Add Row Below</strong> is
+<kbd>Cmd+Enter</kbd> (<kbd>Ctrl+Enter</kbd>).</p>
+<h2 id='code-blocks'>Code blocks</h2>
+<p>Fenced code blocks (three backticks and a language name) are syntax-highlighted. Click the
+language label to change the language, or the copy button to copy the code. <strong>View → Highlight
+Code</strong> turns highlighting off for the session.</p>
+<h2 id='links'>Links</h2>
+<p>Links open with <kbd>Cmd</kbd>-click (<kbd>Ctrl</kbd>-click on Windows and Linux), so a plain
+click can place the caret inside the link text. Links between notes in a folder are covered in
+<a href="folders-and-vaults.html">Folders and vaults</a>.</p>
+<h2 id='images'>Images</h2>
+<p>Paste an image (for example a screenshot) or drag image files into a document. Markise copies
+the image into a folder next to the note — <code>assets</code> by default — and inserts a Markdown image
+with a relative path. Pasted image data is saved as <code>Pasted image &lt;date and time&gt;.png</code>.</p>
+<ul>
+<li>Dropping other files inserts a link to them; whether they are copied too is a preference.</li>
+<li>Pasting an image URL inserts it as an image.</li>
+<li>Undo removes the inserted Markdown but never deletes the copied file.</li>
+<li>In a document that has never been saved, images go to Markise&#39;s own app-data folder
+(<code>user-images</code>, next to the settings file) and are linked with absolute paths.</li>
+<li>Limits: 50 MiB per file; clipboard images up to 100 megapixels.</li>
+</ul>
+<p>Where images go is set in <strong>Preferences → Files &amp; Images</strong>; see
+<a href="settings.html#files-and-images">Settings</a>. In an Obsidian vault, the vault&#39;s attachment folder is
+used when it is set.</p>
+<h2 id='find-and-replace'>Find and replace</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Command</th><th>macOS</th><th>Windows and Linux</th></tr>
+</thead>
+<tbody>
+<tr><td>Find…</td><td><kbd>Cmd+F</kbd></td><td><kbd>Ctrl+F</kbd></td></tr>
+<tr><td>Find Next / Find Previous</td><td><kbd>Cmd+G</kbd> / <kbd>Shift+Cmd+G</kbd></td><td><kbd>F3</kbd> / <kbd>Shift+F3</kbd></td></tr>
+<tr><td>Find and Replace…</td><td><kbd>Alt+Cmd+F</kbd></td><td><kbd>Ctrl+H</kbd></td></tr>
+<tr><td>Replace Next</td><td><kbd>Alt+Cmd+E</kbd></td><td><kbd>Ctrl+Alt+E</kbd></td></tr>
+</tbody>
+</table></figure>
+<p>The find bar has toggles for <strong>Match case</strong> (Aa), <strong>Whole word</strong> and <strong>regular expressions</strong>
+(.*). With regular expressions, the replacement can use captured groups as <code>$1</code> or <code>${name}</code>;
+write <code>$$</code> for a literal dollar sign. <strong>Replace All</strong> is one undo step, and the bar offers
+<strong>Undo Replace All</strong> right after it.</p>
+<p>Find searches the Markdown source of the current document in every view, link addresses
+included; a match hidden by formatting can be shown with <strong>Show in Source</strong>. Other files are not
+searched: search across a folder is not available in the beta.</p>
+<h2 id='copy-and-paste'>Copy and paste</h2>
+<p>Copy and cut put the Markdown source of the selection on the clipboard. Paste inserts text as
+plain text; rich text copied from other applications is not converted to Markdown yet.</p>
+<h2 id='typing-helpers'>Typing helpers</h2>
+<p><strong>Preferences → Editor</strong> controls auto-pairing of brackets and quotes (on by default),
+auto-pairing of Markdown markers, and smart punctuation (curly quotes, dashes), which is off by
+default. See <a href="settings.html#editor">Settings</a>.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/editing.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

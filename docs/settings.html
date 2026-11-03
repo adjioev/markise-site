@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Settings · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html' aria-current='page'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='settings'>Settings</h1>
+<p>Open <strong>Preferences…</strong> with <kbd>Cmd+,</kbd> (<kbd>Ctrl+,</kbd>; on Windows and Linux it is at the
+end of the <strong>Edit</strong> menu). Changes apply immediately. The search field at the top finds a
+setting by name.</p>
+<p>Most sections have a <strong>Reset to Defaults</strong> button at the bottom (Editor, Markdown, Appearance,
+Source Mode, Files &amp; Images); it asks before resetting.</p>
+<h2 id='general'>General</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Custom key bindings</td><td>none</td><td>Shows your <code>keyBinding</code> changes; see <a href="shortcuts.html#change-a-shortcut">Keyboard shortcuts</a>.</td></tr>
+<tr><td>Show word count</td><td>on</td><td>The status bar count; click it to switch between words, characters and characters without spaces.</td></tr>
+<tr><td>Check for updates automatically</td><td>not set (off)</td><td>Asked on first launch; see <a href="updates-and-privacy.html">Updates and privacy</a>.</td></tr>
+</tbody>
+</table></figure>
+<h2 id='editor'>Editor</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Auto-pair brackets and quotes</td><td>on</td><td>Typing an opening bracket or quote adds the closing one.</td></tr>
+<tr><td>Auto-pair Markdown syntax</td><td>off</td><td>The same for Markdown markers such as <code>**</code>.</td></tr>
+<tr><td>Smart punctuation (convert on input)</td><td>off</td><td>Straight quotes become curly quotes as you type.</td></tr>
+<tr><td>Smart dashes: -- as em dash</td><td>off</td><td>Only with smart punctuation on. Off: <code>--</code> gives an en dash and <code>---</code> an em dash.</td></tr>
+</tbody>
+</table></figure>
+<h2 id='markdown'>Markdown</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Render diagrams</td><td>on</td><td>Mermaid, sequence and flow fences are drawn; see <a href="math-and-diagrams.html">Math and diagrams</a>.</td></tr>
+<tr><td>Wikilinks</td><td>on</td><td><code>[[Note]]</code> links; see <a href="folders-and-vaults.html">Folders and vaults</a>.</td></tr>
+<tr><td>Comments &amp; suggestions (CriticMarkup)</td><td>on</td><td>See <a href="comments-and-suggestions.html">Comments and suggestions</a>.</td></tr>
+<tr><td>Show comments</td><td>In the margin</td><td>Or &quot;As bubbles (hover to read)&quot;.</td></tr>
+<tr><td>Keep comments in exports</td><td>on</td><td>HTML and PDF keep comments.</td></tr>
+<tr><td>Highlight code (this session)</td><td>on</td><td>Syntax colouring of code blocks, for the current session.</td></tr>
+</tbody>
+</table></figure>
+<h2 id='appearance'>Appearance</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Theme</td><td>Markise</td><td>Complete themes as preview cards.</td></tr>
+<tr><td>Style, Colors</td><td>Markise Default, Markise</td><td>Pick them separately; see <a href="themes.html">Themes</a>.</td></tr>
+<tr><td>Light or dark</td><td>System</td><td>System, Light or Dark.</td></tr>
+<tr><td>Theme files</td><td></td><td><strong>Theme Report…</strong>, <strong>Open Theme Folder</strong>, <strong>Import Theme…</strong></td></tr>
+<tr><td>Body font, Cyrillic, Greek and CJK font</td><td>the style&#39;s</td><td>Font overrides.</td></tr>
+<tr><td>Base size, Line height, Content width</td><td>the style&#39;s</td><td>Each has a button to go back to the style&#39;s value.</td></tr>
+<tr><td>Show toolbar, Toolbar position</td><td>on, Top</td><td>The formatting toolbar above or below the page.</td></tr>
+<tr><td>Show recent files in the sidebar</td><td>on</td><td></td></tr>
+<tr><td>Zoom</td><td>100 %</td><td>50 % to 300 % in steps of 10 %.</td></tr>
+</tbody>
+</table></figure>
+<h2 id='source-mode'>Source Mode</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th></tr>
+</thead>
+<tbody>
+<tr><td>Line numbers</td><td>off</td></tr>
+<tr><td>Soft wrap</td><td>on</td></tr>
+<tr><td>Highlight current line</td><td>on</td></tr>
+<tr><td>Show whitespace</td><td>off</td></tr>
+<tr><td>Font size</td><td>automatic (matches the body text), 8–40 pt</td></tr>
+</tbody>
+</table></figure>
+<h2 id='files-and-images'>Files and images</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Setting</th><th>Default</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Automatically save files</td><td>off</td><td>See <a href="saving-and-recovery.html">Saving and recovery</a>.</td></tr>
+<tr><td>Autosave interval (minutes)</td><td>5</td><td>1 to 1440.</td></tr>
+<tr><td>Back up unsaved drafts</td><td>on</td><td></td></tr>
+<tr><td>Save when closing</td><td>off</td><td></td></tr>
+<tr><td>Remember recent files and folders</td><td>on</td><td></td></tr>
+<tr><td>Save pasted and dropped images to</td><td>Folder next to the note</td><td>Or &quot;Folder in the root&quot; or &quot;Same folder as the note&quot;.</td></tr>
+<tr><td>Image folder</td><td><code>assets</code></td><td></td></tr>
+<tr><td>Use the Obsidian attachment folder when set</td><td>on</td><td></td></tr>
+<tr><td>Use relative paths</td><td>on</td><td></td></tr>
+<tr><td>Copy dropped image files into the image folder</td><td>on</td><td></td></tr>
+<tr><td>Copy other dropped files too</td><td>off</td><td></td></tr>
+<tr><td>Paste image URLs as images</td><td>on</td><td></td></tr>
+</tbody>
+</table></figure>
+<p>The <strong>Locations</strong> part shows where the settings file and your themes are.</p>
+<h2 id='export'>Export</h2>
+<p>There are no export settings in the beta: each format uses its built-in options, and Pandoc is
+found automatically. See <a href="export.html">Export</a>.</p>
+<h2 id='the-settings-file'>The settings file</h2>
+<p>All preferences are stored in one JSON file:</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>System</th><th>Settings file</th></tr>
+</thead>
+<tbody>
+<tr><td>macOS</td><td><code>~/Library/Application Support/markise/settings.json</code></td></tr>
+<tr><td>Windows</td><td><code>%APPDATA%\markise\settings.json</code></td></tr>
+<tr><td>Linux</td><td><code>~/.config/markise/settings.json</code> (or <code>$XDG_CONFIG_HOME/markise/settings.json</code>)</td></tr>
+</tbody>
+</table></figure>
+<p>You can edit it by hand while Markise is closed; changes made while it runs are read at the
+next start. Keys Markise does not know are kept. If the file cannot be read, Markise starts with
+the defaults and does not overwrite the file until you change a setting. Several running
+instances do not overwrite each other&#39;s changes.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/settings.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

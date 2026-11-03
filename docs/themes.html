@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Themes · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html' aria-current='page'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='themes'>Themes</h1>
+<p>A Markise theme has two independent parts:</p>
+<ul>
+<li>a <strong>style</strong> — typography and spacing: fonts, sizes, line height, margins;</li>
+<li><strong>colours</strong> — a colour scheme, often with a light and a dark variant.</li>
+</ul>
+<p>You can use a complete theme, or combine the style of one with the colours of another.</p>
+<h2 id='choose-a-theme'>Choose a theme</h2>
+<ul>
+<li><strong>View → Theme</strong> switches quickly between Markise, Markise Night and the bundled themes
+Drake, Lapis and Phycat, plus your own themes under <strong>My Themes</strong>.</li>
+<li><strong>Preferences → Appearance</strong> (also <strong>View → Theme → Theme Settings…</strong>) shows all themes as
+preview cards and lets you pick the style and the colours separately. When they come from
+different themes, it says so (&quot;Custom&quot;).</li>
+</ul>
+<p>Built in:</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>Styles</td><td>Markise Default, Classic, Modern, Technical, Compact</td></tr>
+<tr><td>Colour schemes</td><td>Markise (light and dark), Markise Night, Catppuccin (Latte, Mocha, Frappé, Macchiato), Dracula, Gruvbox (light and dark), Nord, Rosé Pine (Dawn, Main, Moon), Tokyo Night (Day, Night, Storm)</td></tr>
+<tr><td>Bundled community themes</td><td>Drake, Lapis, Phycat — each with light and dark variants, used under their MIT licences</td></tr>
+</tbody>
+</table></figure>
+<p>The colour palettes are Markise&#39;s own themes built from the published colour values of those
+projects.</p>
+<h2 id='light-dark-or-system'>Light, dark or system</h2>
+<p><strong>Preferences → Appearance → Light or dark</strong>: <strong>System</strong> (the default) follows your operating
+system&#39;s appearance and switches with it; <strong>Light</strong> and <strong>Dark</strong> keep one variant. The sidebar,
+outline and dialogs take their colours from the theme too.</p>
+<h2 id='fonts-and-size'>Fonts and size</h2>
+<p><strong>Preferences → Appearance → Font &amp; size</strong> overrides the style&#39;s body font (with separate
+choices for Cyrillic, Greek and CJK text), base size (9–36), line height (1.0–3.0) and content
+width. Each override has a reset button that returns to the style&#39;s value. <strong>Zoom</strong> (<strong>View →
+Zoom In / Zoom Out / Actual Size</strong>) scales the whole window between 50 % and 300 %.</p>
+<h2 id='import-a-css-theme'>Import a CSS theme</h2>
+<p>Markise can import community CSS themes written for Typora:</p>
+<ol>
+<li><strong>Preferences → Appearance → Import Theme…</strong> and choose the theme&#39;s <code>.css</code> file.</li>
+<li>Markise copies the CSS file and the files next to it into its themes folder. If a theme with
+that name exists, it asks before replacing it.</li>
+<li>The theme appears in <strong>View → Theme → My Themes</strong> and in Preferences.</li>
+</ol>
+<p><strong>Open Theme Folder</strong> shows the themes folder:</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>System</th><th>Themes folder</th></tr>
+</thead>
+<tbody>
+<tr><td>macOS</td><td><code>~/Library/Application Support/markise/themes/</code></td></tr>
+<tr><td>Windows</td><td><code>%APPDATA%\markise\themes\</code></td></tr>
+<tr><td>Linux</td><td><code>~/.config/markise/themes/</code> (or <code>$XDG_CONFIG_HOME/markise/themes/</code>)</td></tr>
+</tbody>
+</table></figure>
+<p>Edit a theme&#39;s CSS in that folder and Markise reloads it as soon as the file changes. A file
+named <code>base.user.css</code> or <code>&lt;theme&gt;.user.css</code> next to the themes adds your own rules on top.</p>
+<p>Only import themes whose licence allows it, and never copy the themes that ship with other
+commercial editors.</p>
+<h2 id='what-compatible-means'>What &quot;compatible&quot; means</h2>
+<p>Markise does not contain a web browser. It reads a theme&#39;s CSS with its own parser and applies
+the subset of CSS it supports to its own rendering — properties such as colours, fonts, sizes,
+spacing and backgrounds, CSS variables (<code>var()</code>), light and dark variants written
+with <code>@media (prefers-color-scheme)</code>, and <code>@import</code> of files inside the theme&#39;s folder. Other
+rules are skipped, so an imported theme can look different from the same theme in other
+editors. Some limits:</p>
+<ul>
+<li>Fonts the theme loads with <code>@font-face</code> are not loaded; an installed font with the same name
+is used instead.</li>
+<li>Generated content (<code>::before</code> / <code>::after</code> text and icons) is not drawn.</li>
+<li><code>:has()</code> selectors and layout tied to the window width are not supported.</li>
+<li>Theme files may be up to 2 MiB each and 8 MiB together.</li>
+</ul>
+<h3 id='theme-report'>Theme Report</h3>
+<p><strong>Preferences → Appearance → Theme Report…</strong> explains how a theme was applied: how many
+declarations were used and how many were ignored, unsupported properties, values, selectors and
+at-rules, fonts that are not installed, and the files copied by an import. Use it when a theme
+does not look as expected.</p>
+<p>Typora is a trademark of its respective owner. Markise is an independent project and is not
+affiliated with or endorsed by Typora; importing a theme does not imply any endorsement by its
+author.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/themes.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Comments and suggestions · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html' aria-current='page'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='comments-and-suggestions'>Comments and suggestions</h1>
+<p>Markise shows review marks written in <strong>CriticMarkup</strong>, a plain-text syntax. Because the marks
+are part of the text, they survive any editor, version control and e-mail.</p>
+<h2 id='syntax'>Syntax</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Mark</th><th>Write</th></tr>
+</thead>
+<tbody>
+<tr><td>Comment</td><td><code>{&gt;&gt;Check this date&lt;&lt;}</code></td></tr>
+<tr><td>Comment with an author</td><td><code>{&gt;&gt;@dana: Check this date&lt;&lt;}</code></td></tr>
+<tr><td>Suggested insertion</td><td><code>{++new text++}</code></td></tr>
+<tr><td>Suggested deletion</td><td><code>{--old text--}</code></td></tr>
+<tr><td>Suggested replacement</td><td><code>{~~old~&gt;new~~}</code></td></tr>
+<tr><td>Highlight (usually followed by a comment)</td><td><code>{==this sentence==}{&gt;&gt;why?&lt;&lt;}</code></td></tr>
+</tbody>
+</table></figure>
+<p>Marks stay within one paragraph and cannot be nested. Comments are plain text (no formatting
+inside). Marks inside code, math and HTML blocks are left alone, and <code>\{</code> writes a literal brace.</p>
+<h2 id='add-and-review'>Add and review</h2>
+<ul>
+<li>Select text and choose <strong>Edit → Comments &amp; Suggestions → Add Comment</strong>
+(<kbd>Alt+Cmd+M</kbd>, <kbd>Ctrl+Alt+M</kbd>), use the <strong>Comment</strong> button in the toolbar, or
+type the marks yourself.</li>
+<li>In the rendered view, insertions are underlined, deletions struck through, and comments
+appear as cards in the right margin — or, if you prefer, as bubbles that show on hover
+(<strong>Preferences → Markdown → Show comments</strong>).</li>
+<li><strong>Accept Suggestion</strong> applies a suggestion and removes its marks; <strong>Reject Suggestion</strong>
+restores the original. <strong>Accept All Suggestions</strong> and <strong>Reject All Suggestions</strong> do this for
+the whole document; <strong>Delete Comment</strong> removes a comment. These commands are in <strong>Edit →
+Comments &amp; Suggestions</strong> and in the context menu.</li>
+<li>The <strong>Comments</strong> panel in the sidebar lists every mark with <strong>Accept</strong> / <strong>Reject</strong> (or
+<strong>Delete</strong>) buttons, and <strong>Accept All</strong> / <strong>Reject All</strong> at the top.</li>
+</ul>
+<p>Accepting keeps inserted text, drops deleted text and keeps the new side of a replacement;
+rejecting does the opposite. Each action is an ordinary edit, so undo works.</p>
+<p><strong>Preferences → Markdown → Comments &amp; suggestions (CriticMarkup)</strong> turns the feature off; the
+marks then show as the plain text they are.</p>
+<h2 id='save-a-clean-copy'>Save a clean copy</h2>
+<p><strong>File → Save Copy Without Comments…</strong> writes a copy with all comments and highlights removed
+(the highlighted text is kept). If suggestions are still pending, Markise first asks whether to
+<strong>Accept All</strong> or <strong>Reject All</strong> of them in the copy. The open document does not change, and the
+copy cannot replace the document&#39;s own file. The suggested name is <code>&lt;name&gt; (clean).md</code>.</p>
+<h2 id='in-exports'>In exports</h2>
+<p>Exports never accept suggestions on their own: insertions appear underlined and deletions
+struck through. Comments are kept by default — in HTML as marked-up notes, in PDF, PNG and
+Pandoc formats as italic text in brackets. Turn them off with <strong>File → Export → Include
+Comments</strong> or <strong>Preferences → Markdown → Keep comments in exports</strong>; for a document without any
+marks, save a clean copy first and export that.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/comments-and-suggestions.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

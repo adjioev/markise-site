@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Folders and vaults · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html' aria-current='page'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='folders-and-vaults'>Folders and vaults</h1>
+<p>Markise works on ordinary folders of Markdown files. An Obsidian vault is such a folder, so you
+open it the same way: nothing is imported, converted or copied.</p>
+<h2 id='open-a-folder'>Open a folder</h2>
+<p><strong>File → Open Folder…</strong> (<kbd>Shift+Cmd+O</kbd>, <kbd>Ctrl+Shift+O</kbd>) shows the folder in the
+sidebar. When you open a single file, its folder is used. <strong>File → Open Recent</strong> remembers files
+and folders (unless you turn that off in <strong>Preferences → Files &amp; Images</strong>).</p>
+<p><strong>View → Toggle Sidebar</strong> (<kbd>Shift+Cmd+L</kbd>, <kbd>Ctrl+Shift+L</kbd>) shows or hides the
+sidebar. Its activity bar switches between <strong>Files</strong>, the <strong>Outline</strong> of the current document
+(click a heading to jump to it) and <strong>Comments</strong>. The Search icon is a placeholder: search
+across a folder is not available in the beta.</p>
+<h2 id='the-file-tree'>The file tree</h2>
+<p>The tree lists Markdown and plain-text files (<code>.md</code>, <code>.markdown</code>, <code>.txt</code> and similar
+extensions). Hidden files and folders — names starting with a dot, such as <code>.obsidian</code> — are not
+shown.</p>
+<p>Right-click an entry for <strong>Open</strong>, <strong>New File</strong>, <strong>New Folder</strong>, <strong>Rename</strong>, <strong>Move to Trash</strong>,
+<strong>Reveal in Finder</strong> (Show in Explorer / Show in File Manager on Windows and Linux) and <strong>Copy
+Path</strong>. The buttons in the tree&#39;s header collapse all folders and create a new folder or file.</p>
+<ul>
+<li><strong>New File</strong> creates <code>Untitled.md</code> (then <code>Untitled 2.md</code>, …) and lets you name it right away.</li>
+<li><strong>Rename</strong> never replaces an existing file. A document that is open follows its file.
+Links in other notes are <strong>not</strong> updated when you rename a file.</li>
+<li><strong>Move to Trash</strong> asks first and moves the file to the Trash or Recycle Bin, where you can
+restore it. On macOS, Finder&#39;s <strong>Put Back</strong> is not available for files Markise moved there.</li>
+</ul>
+<h2 id='quick-open'>Quick Open</h2>
+<p><strong>File → Quick Open…</strong> (<kbd>Cmd+P</kbd>, <kbd>Ctrl+P</kbd>) finds a file by name in the open
+folder. Type a few letters of the name — they need not be next to each other — and press
+<kbd>Enter</kbd>. Recent files are listed first. Very large folders are searched up to their
+first 100,000 entries.</p>
+<h2 id='links-between-notes'>Links between notes</h2>
+<p>Markise understands wikilinks (<strong>Preferences → Markdown → Wikilinks</strong>, on by default):</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>You write</th><th>It links to</th></tr>
+</thead>
+<tbody>
+<tr><td><code>[[Tides]]</code></td><td>the note <code>Tides.md</code>, anywhere in the folder</td></tr>
+<tr><td><code>[[Lighthouse#The lamp]]</code></td><td>the heading &quot;The lamp&quot; in <code>Lighthouse.md</code></td></tr>
+<tr><td><code>[[#Checklist]]</code></td><td>a heading in the current note</td></tr>
+<tr><td><code>[[Harbour log|the log]]</code></td><td><code>Harbour log.md</code>, shown as &quot;the log&quot;</td></tr>
+<tr><td><code>[[crew/Ann]]</code>, <code>[[./Ann]]</code>, <code>[[../Ann]]</code></td><td>a path from the folder root, or relative to the current note</td></tr>
+</tbody>
+</table></figure>
+<p>Names are compared without regard to case. When several notes share a name, the one in the same
+folder as the current note wins, then the one with the shortest path. Ordinary Markdown links to
+local files, such as <code>[Tides](Tides.md)</code>, work too. A link that does not resolve is shown in a
+lighter colour.</p>
+<h3 id='follow-a-link'>Follow a link</h3>
+<p><kbd>Cmd</kbd>-click (<kbd>Ctrl</kbd>-click) a link to open the note; a heading link scrolls to
+the heading. A link to another kind of file (an image, a PDF) opens it in its default
+application after asking. Links work in an opened folder; while the folder is still being
+indexed, Markise asks you to try again a moment later.</p>
+<p><strong>Go → Back</strong> and <strong>Go → Forward</strong> (<kbd>Alt+Cmd+←</kbd> / <kbd>Alt+Cmd+→</kbd>, on Windows and
+Linux <kbd>Alt+←</kbd> / <kbd>Alt+→</kbd>) return to where you were, scroll position included.</p>
+<h3 id='create-a-missing-note'>Create a missing note</h3>
+<p><kbd>Cmd</kbd>-click a link to a note that does not exist, and Markise offers to create it
+(&quot;Create … in …?&quot;). The new note is empty and opens right away. It is created next to the note
+with the link, unless the link names a folder or the vault&#39;s settings say otherwise. Only notes
+can be created this way, and never outside the opened folder.</p>
+<h3 id='autocomplete'>Autocomplete</h3>
+<p>In the rendered view, type <code>[[</code> to get a list of notes. Keep typing to narrow it, use the arrow
+keys, and press <kbd>Enter</kbd> or <kbd>Tab</kbd> to insert the link; <kbd>Esc</kbd> closes the
+list. In an Obsidian vault Markise inserts a wikilink (unless the vault is set to Markdown
+links); in a plain folder it inserts a Markdown link such as <code>[Tides](Tides.md)</code>.</p>
+<p>Not supported yet: embeds (<code>![[note]]</code> is shown as text) and block references (<code>[[note#^id]]</code>
+opens the note without scrolling).</p>
+<h2 id='obsidian-vaults'>Obsidian vaults</h2>
+<p>A folder is treated as an Obsidian vault when it contains a <code>.obsidian</code> folder. Markise reads
+only <code>.obsidian/app.json</code>, and only these settings from it: the link format (wikilinks or
+Markdown links, and shortest, relative or absolute paths), the attachment folder, and where new
+notes go. It never writes anything inside <code>.obsidian/</code> — no settings, notes or attachments.
+Changes to <code>app.json</code> are picked up while Markise runs.</p>
+<p>Plugins, canvases, community themes, graph view and other Obsidian features are not used.
+Markise is an independent project; see the trademark notice at the bottom of this page.</p>
+<h2 id='background-indexing'>Background indexing</h2>
+<p>When a folder opens, Markise lists its files on a background thread, so the window stays
+responsive, and then follows changes made by other programs. The index lives in memory only;
+nothing is written to the folder.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/folders-and-vaults.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

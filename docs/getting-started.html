@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Getting started · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html' aria-current='page'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='getting-started'>Getting started</h1>
+<h2 id='download'>Download</h2>
+<p>Markise is published on the <a href="https://github.com/adjioev/markise/releases">GitHub releases page</a>.
+The first beta is <strong>0.1.0-beta.1</strong>; until it is published, the releases page has no downloads.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Platform</th><th>File</th><th>Requirements</th></tr>
+</thead>
+<tbody>
+<tr><td>macOS</td><td><code>markise-macos-universal.dmg</code></td><td>macOS 11 Big Sur or later, Apple silicon or Intel</td></tr>
+<tr><td>Windows</td><td><code>markise-windows-x86_64.zip</code></td><td>Windows 10 or 11, x86_64, a graphics driver with OpenGL 3</td></tr>
+<tr><td>Linux</td><td><code>markise-linux-x86_64.tar.gz</code></td><td>x86_64, glibc 2.35 or later (for example Ubuntu 22.04, Debian 12, Fedora 36 and newer), X11 or Wayland</td></tr>
+</tbody>
+</table></figure>
+<p>Each download also contains <code>markise-cli</code> (a command-line tool for HTML export and round-trip
+checks), the licences, <code>NOTICE</code> and <code>THIRD_PARTY/</code>.</p>
+<h3 id='check-the-download-optional'>Check the download (optional)</h3>
+<p>Each release has a <code>SHA256SUMS</code> file. Put it next to the download and run:</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>shasum</span><span class='cm-variable'> -a</span> 256<span class='cm-variable'> -c</span> SHA256SUMS<span class='cm-variable'> --ignore-missing     </span><span class='cm-comment'># macOS</span>
+<span class='cm-def'>sha256sum</span><span class='cm-variable'> -c</span> SHA256SUMS<span class='cm-variable'> --ignore-missing         </span><span class='cm-comment'># Linux</span>
+</code></pre>
+<p>On Windows, compare the output of <code>Get-FileHash markise-windows-x86_64.zip</code> (PowerShell) with
+the line in <code>SHA256SUMS</code>.</p>
+<h2 id='install'>Install</h2>
+<p>The beta builds are <strong>not code-signed</strong>: the macOS app has no Apple Developer ID signature and
+is not notarized, and the Windows program has no Authenticode signature. Your system therefore
+asks for confirmation the first time you open Markise.</p>
+<h3 id='macos'>macOS</h3>
+<ol>
+<li>Open <code>markise-macos-universal.dmg</code> and drag <strong>Markise</strong> onto <strong>Applications</strong>.</li>
+<li>Open Markise from Applications. macOS says it cannot verify the app; close that message
+(<strong>Done</strong>, not <strong>Move to Trash</strong>).</li>
+<li>Open <strong>System Settings → Privacy &amp; Security</strong>, scroll to <strong>Security</strong> and click
+<strong>Open Anyway</strong> next to the note about Markise. Confirm with your password, then click
+<strong>Open</strong>.</li>
+</ol>
+<p>From then on Markise opens normally. This is Apple&#39;s procedure for apps from unidentified
+developers, described in
+<a href="https://support.apple.com/en-au/102445">Apple&#39;s guide to opening apps safely</a>. On macOS 11 and
+12 the setting is in <strong>System Preferences → Security &amp; Privacy → General</strong>. If there is no
+<strong>Open Anyway</strong> button, see <a href="faq.html#macos-says-markise-is-damaged-or-cannot-be-opened">the FAQ</a>.</p>
+<p>Markise registers itself for <code>.md</code> and <code>.markdown</code> files: use <strong>Open With → Markise</strong> in Finder,
+or make it the default under <strong>Get Info → Open with → Change All…</strong>. To use <code>markise-cli</code>, copy
+it from the disk image to a folder on your <code>PATH</code>.</p>
+<h3 id='windows'>Windows</h3>
+<ol>
+<li>Right-click the zip file, choose <strong>Extract All…</strong>, and pick a folder for Markise.</li>
+<li>Run <code>markise.exe</code> from the extracted folder.</li>
+<li>If Microsoft Defender SmartScreen shows &quot;Windows protected your PC&quot;, click <strong>More info</strong>,
+check that the app name is <code>markise.exe</code>, then click <strong>Run anyway</strong>.</li>
+</ol>
+<p>To open Markdown files with Markise, right-click a <code>.md</code> file → <strong>Open with → Choose another
+app</strong> → browse to <code>markise.exe</code>.</p>
+<h3 id='linux'>Linux</h3>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>tar</span> xzf markise-linux-x86_64.tar.gz
+<span class='cm-def'>cd</span> markise-<span class='cm-operator'>*</span>-linux-x86_64
+<span class='cm-def'>./markise</span>
+</code></pre>
+<p>Optionally install it for your user, with a menu entry, an icon and &quot;Open with&quot; support:</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>mkdir</span><span class='cm-variable'> -p</span> <span class='cm-builtin'>~</span>/.local/bin <span class='cm-operator'>&amp;&amp;</span> <span class='cm-def'>cp</span> markise markise-cli <span class='cm-builtin'>~</span>/.local/bin/
+<span class='cm-def'>cp</span><span class='cm-variable'> -r</span> share <span class='cm-builtin'>~</span>/.local/
+</code></pre>
+<p>Markise needs OpenGL or OpenGL ES 3, libxkbcommon, and the Wayland or X11 client libraries;
+desktop systems normally have them. There is no AppImage, .deb or Flatpak yet.</p>
+<h2 id='first-launch'>First launch</h2>
+<ul>
+<li>The <strong>tutorial</strong> opens as a scratch document. Edit it freely: it is a copy, and your files are
+never touched. Open it again any time from <strong>Help → Tutorial</strong>.</li>
+<li>A small card in the corner asks <strong>&quot;Check for updates automatically?&quot;</strong> with the buttons
+<strong>Check Automatically</strong> and <strong>Not Now</strong>. Nothing is sent until you agree; see
+<a href="updates-and-privacy.html">Updates and privacy</a>.</li>
+</ul>
+<h2 id='open-write-and-save'>Open, write and save</h2>
+<ul>
+<li><strong>File → Open…</strong> (<kbd>Cmd+O</kbd>) opens a file. <strong>File → Open Folder…</strong>
+(<kbd>Shift+Cmd+O</kbd>) shows a folder in the sidebar; see
+<a href="folders-and-vaults.html">Folders and vaults</a>.</li>
+<li><strong>File → New</strong> (<kbd>Cmd+N</kbd>) starts an untitled document.</li>
+<li><strong>File → Save</strong> (<kbd>Cmd+S</kbd>) saves; the first save of a new document asks for a name.</li>
+<li>Autosave is off by default, but unsaved changes are backed up as drafts and offered again
+after a crash; see <a href="saving-and-recovery.html">Saving and recovery</a>.</li>
+</ul>
+<p>Next: <a href="editing.html">Editing</a>.</p>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/getting-started.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.
+          Typora is a trademark of its respective owner. Markise is an independent project and is
+          not affiliated with or endorsed by Typora.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
