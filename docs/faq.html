@@ -38,6 +38,8 @@
         <li><a href='themes.html'>Themes</a></li>
         <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
         <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html'>Blocks</a></li>
+        <li><a href='block-packages.html'>Making block packages</a></li>
         <li><a href='export.html'>Export</a></li>
         <li><a href='large-files.html'>Large files</a></li>
         <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
@@ -67,7 +69,8 @@ local images only; the Pandoc path cannot be set by hand (<a href="export.html#l
 <li><strong>Shortcuts:</strong> changed in <code>settings.json</code> only; file and view commands cannot be rebound
 (<a href="shortcuts.html#change-a-shortcut">Keyboard shortcuts</a>).</li>
 <li><strong>Updates:</strong> Markise tells you about a new version but never installs it.</li>
-<li><strong>Linux:</strong> a tarball only; no AppImage, .deb or Flatpak.</li>
+<li><strong>Linux:</strong> 0.1.0-beta.1 is a tarball only; later releases add an AppImage and a <code>.deb</code>
+package. No Flatpak and no apt repository.</li>
 </ul>
 <h2 id='is-markise-free-where-is-the-source'>Is Markise free? Where is the source?</h2>
 <p>Markise is free and open source, dual-licensed under MIT or Apache-2.0. The source, issues and
@@ -98,7 +101,11 @@ driver, then start Markise from a terminal (<code>markise.exe FILE.md</code> or 
 its messages, and check the log file (below).</p>
 <h3 id='linux-missing-libraries'>Linux: missing libraries</h3>
 <p>Install the OpenGL/EGL, libxkbcommon and Wayland or X11 client libraries from your
-distribution. The build needs glibc 2.35 or later.</p>
+distribution (the <code>.deb</code> package brings them in when installed with <code>apt install</code>). The build
+needs glibc 2.35 or later.</p>
+<h3 id='linux-the-appimage-does-not-start-fuse'>Linux: the AppImage does not start (FUSE)</h3>
+<p>Install <code>fuse3</code> (<code>sudo apt install fuse3</code> on Debian and Ubuntu), or run
+<code>./markise-x86_64.AppImage --appimage-extract-and-run</code>.</p>
 <h2 id='something-went-wrong'>Something went wrong</h2>
 <h3 id='where-is-the-log-file'>Where is the log file?</h3>
 <p><code>markise.log</code> holds start lines, crash locations and fatal errors — never document contents:</p>

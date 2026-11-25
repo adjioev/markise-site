@@ -38,6 +38,8 @@
         <li><a href='themes.html'>Themes</a></li>
         <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
         <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html'>Blocks</a></li>
+        <li><a href='block-packages.html'>Making block packages</a></li>
         <li><a href='export.html' aria-current='page'>Export</a></li>
         <li><a href='large-files.html'>Large files</a></li>
         <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
@@ -70,6 +72,11 @@ without asking (it confirms once per document and destination). <strong>Include 
 whether review comments are kept (see
 <a href="comments-and-suggestions.html#in-exports">Comments and suggestions</a>).</p>
 <p>From the command line, <code>markise-cli html FILE.md -o FILE.html</code> writes the same kind of HTML.</p>
+<h2 id='callouts'>Callouts</h2>
+<p><a href="editing.html#callouts">Callouts</a> export with their title and colour. In HTML a foldable one is a
+<code>&lt;details&gt;</code> element, closed or open as written. PDF and PNG show every callout open, without its
+icon. Pandoc formats get a <code>Div</code> with the classes <code>callout</code> and the type, and what becomes of it
+depends on the format.</p>
 <h2 id='pdf-page-setup'>PDF page setup</h2>
 <p>The PDF page is A4 with 18 mm top and bottom and 16 mm side margins unless the document&#39;s front
 matter says otherwise:</p>

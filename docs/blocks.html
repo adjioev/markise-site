@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Blocks · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html' aria-current='page'>Blocks</a></li>
+        <li><a href='block-packages.html'>Making block packages</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='blocks'>Blocks</h1>
+<p>A block is a named part of a document that a website knows how to show: a tip, a question, a
+gallery. In the file it is plain Markdown between two lines:</p>
+<pre class='md-fences md-end-block' lang='text'><code class='language-text' lang='text'>:::tip
+
+Tap the bottom of the loaf. It should sound hollow.
+
+:::
+</code></pre>
+<p>Any text editor can read and change that. What a block means comes from the <strong>block package</strong> of
+the site you write for: which fields it has, how it looks, what you can insert. Without a package
+a block is a simple card with its name on the top edge, and you can write one by hand: type
+<code>:::name</code> on a new line and press <kbd>Return</kbd>, and Markise adds the closing line.</p>
+<p>Block packages are new after 0.1.0-beta.1. If you make a site and want to write a package, see
+<a href="block-packages.html">Making block packages</a>.</p>
+<h2 id='connect-a-package'>Connect a package</h2>
+<p>A site gives you a folder with two things in it: the package, a <code>.tar.gz</code> file, and a file named
+<code>blocks.config.json</code> that says which package this folder uses and pins its exact contents with a
+hash. Markise looks for <code>blocks.config.json</code> next to your document and in the folders above it, up
+to your home folder, and the nearest one counts. It reads nothing from the network.</p>
+<p>The first time, a card in the corner names the package, its file and its hash, and asks whether to
+use it. You can go on typing meanwhile, and blocks stay cards until you answer.</p>
+<ul>
+<li><strong>Use Package</strong> unpacks a copy into your settings folder, so it goes on working without the
+<code>.tar.gz</code> file. Other documents bound to the same file do not ask again.</li>
+<li><strong>Not Now</strong> holds until you quit. The status bar then shows <code>Blocks: name version · not in use</code>,
+and its menu has <strong>Use This Package…</strong>.</li>
+</ul>
+<p>Use a package only if you trust where the folder came from. A hash proves that the files are the
+ones the folder names, not who made them. If the file changes, Markise asks again.</p>
+<p>Once it is in use, the status bar shows <code>Blocks: name version</code>. Its menu has the details and
+<strong>Stop Using This Package</strong>, which deletes the unpacked copy and your yes; your documents do not
+change, and their blocks are cards again. If something is wrong with the package, the status bar
+says <code>Block package problem</code> and its menu says what. The blocks stay cards and the document works
+as usual. A changed <code>blocks.config.json</code> counts from the next time you open the document.</p>
+<h2 id='insert-a-block'>Insert a block</h2>
+<p>Press <kbd>/</kbd> on an empty line, or choose <strong>Paragraph → Insert Block…</strong>
+(<kbd>Alt+Cmd+B</kbd>; <kbd>Ctrl+Alt+B</kbd> on Windows and Linux). The block library opens with
+what the package offers. Type to narrow the list, use the arrow keys and <kbd>Return</kbd> to
+choose, <kbd>Esc</kbd> to close.</p>
+<p><code>/</code> opens the library only on an empty line outside any block, list or quote, and only when the
+package offers something or the document <a href="#sections">has sections</a>. Anywhere else, and in Source Code Mode, it is a slash. To type a line
+that starts with a slash, press <kbd>/</kbd> twice, or type the text and press <kbd>Return</kbd>
+when nothing matches.</p>
+<p>A new block goes on the empty line, or after what the caret is in, and never splits or nests
+anything. Inserting is one undo step.</p>
+<h2 id='how-a-block-shows'>How a block shows</h2>
+<p>A block can show three ways. The button on its top edge says which comes next, and so do the
+commands.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Button</th><th>What you see</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Show Native View</strong></td><td>Markise&#39;s own view of the block, as the package describes it. You edit it where it stands</td></tr>
+<tr><td><strong>Show as on the Site</strong></td><td>a picture drawn by the site&#39;s own code (macOS; see <a href="#limits">Limits</a>)</td></tr>
+<tr><td><strong>Show Markdown</strong></td><td>the simple card: the block&#39;s content as ordinary text you edit like the rest of the page</td></tr>
+</tbody>
+</table></figure>
+<p>A block the package gives no native view starts as its picture, and has only the picture and the
+card. <strong>Switch This Block&#39;s View</strong> (<kbd>Shift+Cmd+M</kbd>) changes the block at the caret, <strong>Switch
+All Blocks&#39; Views</strong> (<kbd>Shift+Alt+Cmd+M</kbd>) the whole document. The choice is not saved in the
+file. It lasts until you quit, and a document opens in the native view.</p>
+<p>Source Code Mode always shows the Markdown as it is.</p>
+<h2 id='read-and-edit'>Read and Edit</h2>
+<p>Every document is in one of two states, and the status bar says which, with a button to switch. <strong>View → Read Mode</strong> (<kbd>Shift+Alt+Cmd+Y</kbd>; <kbd>Ctrl+Shift+Alt+Y</kbd> on Windows and Linux) does the same.</p>
+<p><strong>Edit</strong> is what you know: everything shows and everything can be changed.</p>
+<p><strong>Read</strong> is for reading and practising, in any document, with or without a package. Nothing can be typed, pasted, dropped, undone or replaced, and blocks have no buttons but the ones below. <strong>Your file does not change.</strong> A link opens with a plain click. You can still select, copy and find. A change to the file on disk reloads as usual. Source Code Mode and Side by Side are not available in Read, and switching to Read closes them.</p>
+<p>A package can make a document with its lessons open in Read, so that answers stay hidden from the first moment. Otherwise a document opens in Edit. Your choice for a document lasts until you quit. While you have not accepted a package, Markise does not know what it hides, so the document opens in Edit and its blocks are cards.</p>
+<h2 id='practice'>Practice</h2>
+<p>Some blocks hold what you are meant to work out: a question with its marked answers, an exercise with its solution. If the package says so, such a block is practised in Read.</p>
+<p><strong>A block with answers.</strong> The marks and the explanation are hidden. Click an answer, or move to it with the arrow keys and press <kbd>Space</kbd>: one answer where one is right, several where several can be. <strong>Check</strong> (or <kbd>Return</kbd>) says right or wrong per answer with a tick or a cross, shows the correct ones and reveals the explanation. <strong>Reset</strong> (or <kbd>Return</kbd> again) starts that block over.</p>
+<p><strong>A block with no answers.</strong> Its solution is hidden behind <strong>Show answer</strong>, and <strong>Reset</strong> hides it again. It does not count in the score.</p>
+<p>The status bar shows how it went: <code>3 of 5</code> means 3 right of the 5 blocks you have checked. <strong>Reset All</strong> there starts the document over.</p>
+<p>What you select is kept in memory, for as long as the document stays open. It lasts while you scroll, and goes if the block changes or the document is closed or reloaded. Nothing is written to disk.</p>
+<p>Nothing hidden gets out: what you copy leaves it out, Find does not find it, and while a document has blocks being practised the outline, a table of contents and the Comments panel leave out what is in them. The word count counts the whole file. A block that cannot be practised as it stands, such as one with no marked answer, shows only its first row and <code>⚠ Not ready to practice</code>. Switch to Edit to see what is missing. A block with nothing to work out, such as an exercise whose optional solution is empty, is not practised at all and shows as it is.</p>
+<h2 id='edit-in-place'>Edit in place</h2>
+<p>In the native view, click and type. Each field is a place of its own: arrow keys cross between
+fields, <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd> jump, and a selection that starts in a field stays
+in it. <kbd>Return</kbd> in a list adds an item, and on an empty last item removes it. Press on an
+answer&#39;s mark to mark it. Undo works as in the rest of the document. All the keys are in
+<a href="shortcuts.html#inside-a-block">Keyboard shortcuts</a>.</p>
+<p>What you type stays text: <code># x</code> at the start of a line is written so that it does not become a
+heading. Parts a field cannot edit as text, such as a code block inside it, can be read but not
+typed in; use the card or Source Code Mode for those. A picture has nothing to type in.</p>
+<h2 id='the-form'>The form</h2>
+<p><strong>Edit Block…</strong> (<kbd>Shift+Cmd+E</kbd>), or the pencil on a block&#39;s top edge, opens a form beside
+the document with every field of the block, also the optional ones that have no place in the view
+yet. <strong>Save</strong> (<kbd>Cmd+Return</kbd> or <kbd>Cmd+S</kbd>) puts your changes into the document as
+one undo step; it does not write the file. <strong>Cancel</strong> (<kbd>Esc</kbd> or <kbd>Cmd+W</kbd>) drops
+them. If you are about to lose changed fields, for example by opening another document, Markise
+asks first. If the block changes underneath the form, the form says so.</p>
+<p>When the package says a block takes an argument in its opener, as in <code>:::figure lesson/three</code>, it is the
+first field of the form. It is the way to change it outside Source mode: the opener line itself takes no
+typing. Saving changes only the argument; the block&#39;s picture, its variant and its view follow. If the
+argument is missing or not of the form the package asks for, the field says so, and you can still save.</p>
+<h2 id='move-and-delete'>Move and delete</h2>
+<p>Hover over a block and drag the six dots to the left of its first row. A line shows where it will
+land, <kbd>Esc</kbd> cancels, and the view scrolls near its edges. <strong>Move Block Up</strong> and <strong>Down</strong>
+(<kbd>Alt+Cmd+↑</kbd>, <kbd>Alt+Cmd+↓</kbd>) do the same from the keyboard, and a block inside
+another block stays inside it.</p>
+<p>The bin on a block&#39;s top edge, or <strong>Delete Block</strong> (<kbd>Alt+Cmd+⌫</kbd>), removes the block with
+no question. Undo brings it back exactly. Each move and each deletion is one undo step.</p>
+<h2 id='sections'>Sections</h2>
+<p>Some sites divide a page into sections, each a run of text and blocks. A package whose manifest says
+so, or a document with <code>authoring: blocks-v3</code> in its front matter, has them on: a line that is exactly
+<code>---</code>, at the document&#39;s level, starts a section. Markise shows it as a quiet divider with the
+section&#39;s number and, when it says more than the heading below it, its name, with a gap above and below and a strong line across: a division you can see when you scroll. The first section has no <code>---</code> and needs none, so it has no number either. The outline and status bar follow. A package can have each section drawn as a card instead. This is only how it looks: the file does not change. What a section means is the site&#39;s business.</p>
+<h3 id='start-a-section'>Start a section</h3>
+<p>The block library (<kbd>/</kbd> on an empty line, or <strong>Insert Block…</strong>) has an item for it, first in the list and shown only while the document has
+sections. It says <code>Section</code>, or whatever the package calls one. A document with <code>authoring: blocks-v3</code> of its own needs no package for this.</p>
+<p>Choosing it opens a small form: a title, and metadata only if the site declares some. <strong>Save</strong> (<kbd>Return</kbd>) writes it after what the caret is in, at the
+document&#39;s level, never inside a block or a list, as one undo step, and puts the caret at the end of the title. <strong>Cancel</strong> (<kbd>Esc</kbd>) writes nothing.</p>
+<pre class='md-fences md-end-block' lang='text'><code class='language-text' lang='text'>---
+
+## Title {#id}
+</code></pre>
+<p>The form makes the <code>id</code> from the title as you type: lower case, in Latin letters, Cyrillic written out by a fixed table (<code>щ</code> is <code>shch</code>, <code>ю</code> is <code>yu</code>), with a hyphen between words and a number added if the page has it already. A title with no usable letters gets <code>section-1</code>. You can edit it: a letter, then up to 63 letters, digits, <code>_</code> and <code>-</code>, not used elsewhere on the page.</p>
+<p>With nothing before it, at the top of the document or in a section that is still empty or has only its metadata, no <code>---</code> is written above it, as that would make a section with nothing in
+it. If something follows, the <code>---</code> goes after the title instead, and what follows stays a section of its own. What would leave a section with only metadata is refused with a message, as a site refuses such a section.</p>
+<h3 id='move-and-delete-a-section'>Move and delete a section</h3>
+<p><strong>Move Section Up</strong> and <strong>Down</strong> (<kbd>Shift+Alt+Cmd+↑</kbd>, <kbd>Shift+Alt+Cmd+↓</kbd>; <kbd>Ctrl+Shift+Alt+↑</kbd>, <kbd>Ctrl+Shift+Alt+↓</kbd> on Windows and Linux) and <strong>Delete Section</strong> (<kbd>Shift+Alt+Cmd+⌫</kbd>; <kbd>Ctrl+Shift+Alt+Backspace</kbd>), in the
+Paragraph menu, act on the section holding the caret. Under the pointer a divider has the same three as small buttons for the section it opens. Read has none of this.</p>
+<p>A section moves past one neighbour, with everything in it, its metadata first as it was. Its bytes do not change, and blank lines around the dividers it touches come out as one on each side. The first section has no <code>---</code> above it, and whichever comes to be first still has none: the <code>---</code> stays between them. Front matter stays where it is.
+A first section with nothing in it stays first, as a section cannot take its place without a divider above it. If something would pair differently afterwards, such as a stray <code>:::</code> in each of two sections, a message says so and nothing changes.</p>
+<p>A section with nothing in it or only metadata moves like any other. A site may refuse such a section when it is published, so a short notice says so when a move or a new section involves one.</p>
+<p>Delete takes the section&#39;s bytes and one divider, with no question: a short notice says so and has <strong>Undo</strong> for a few seconds. The only section of a document cannot be deleted this way. Each move and each deletion is one undo step that brings back the exact file.</p>
+<h3 id='in-the-outline'>In the outline</h3>
+<p>In the outline a section&#39;s row reads differently from a heading&#39;s: it has its number, or <code>§</code>, on a ground of its own, with the headings indented under it. A section goes by its <code>id</code>, else its first heading at the package&#39;s <code>title_level</code> (normally <code>##</code>), else its first heading of any level, else what the package calls a section with its number, <code>Section 3</code>. The heading that names it has no row of its own.</p>
+<p>The document&#39;s <code>#</code>, when it is the first thing in the first section, is its title and no section&#39;s name: it has a plain row above the sections, with nothing to press but itself, which goes there.</p>
+<p>A section&#39;s row has a menu: right-click it, or use the small <strong>⋯</strong> at its start, in place of the number, when the pointer is on the row. Heading rows have none. It has <strong>Move Up</strong>, <strong>Move Down</strong>, <strong>Duplicate</strong>, <strong>Insert After…</strong> and <strong>Delete</strong>, and works on that section wherever the caret is. With the keyboard, Tab to the row and press <kbd>Shift+F10</kbd>, or go on to the <strong>⋯</strong> and press <kbd>Return</kbd>; the arrows go through the items and <kbd>Esc</kbd> goes back. Read has no menu.</p>
+<p><strong>Duplicate</strong> puts a copy right after the section, one undo step. The copy is the same text but for the ids that must be unique on a page: a heading&#39;s <code>{#id}</code> and the <code>id</code> in its metadata get a new number, <code>intro</code> becoming <code>intro-2</code>, and a first heading with no id gets one. What is inside a block stays as written, its answers&#39; ids included.</p>
+<p><strong>Insert After…</strong> opens the form of <a href="#start-a-section">a new section</a>, for after this one.</p>
+<p>To drag a section, take the grip that shows beside its row. The cursor says so from the press, and a line shows where it would land; the headings under sections fold away while you drag, and the list scrolls at its edges. Dropping it on its own place does nothing and <kbd>Esc</kbd> cancels. It is one undo step, and what a move refuses a drop refuses, with the same message. A change to the file meanwhile, or another document, ends the drag, and keys edit nothing while you hold it.</p>
+<p>The first section may hold the document&#39;s <code>#</code> title and intro. If a move takes the only <code>#</code> heading along, or brings another section above the first one holding it, the notice says that the title moves too. Nothing is refused for it.</p>
+<h2 id='images'>Images</h2>
+<p>A picture in a block&#39;s native view belongs to the form: <strong>Choose file</strong> opens the image picker. A
+picture in a card or in ordinary text has <strong>Replace…</strong> and <strong>Edit…</strong> when you hover over it. Both,
+and the picker, are described under <a href="editing.html#images">Images</a>.</p>
+<p>In the rendered view an image shows at most 400 points high, in a block or out of one, scaled with
+the window&#39;s zoom; a double click shows it whole. The file stays as it is. A site&#39;s picture is the
+site&#39;s drawing and has no such cap.</p>
+<h2 id='the-⚠-badge'>The ⚠ badge</h2>
+<p>A <code>⚠</code> on a block&#39;s first row says that it does not match what the package expects. Hover over it to
+read why. It stops nothing: you can edit and save the block, and whoever publishes decides how
+strict to be.</p>
+<ul>
+<li><strong>Not filled in yet:</strong> a required field is empty or has too little in it, or the block&#39;s argument
+is missing or not of the form the package asks for. The block stays in its native view; a block with no native view shows as a card. A block fresh from the library often
+starts like this.</li>
+<li><strong>Outside its schema:</strong> content that fits no field, arguments the package does not know, or
+something else the view cannot read. It shows as a card. While the caret is in it, it stays as it
+was, so that it does not change under your typing.</li>
+</ul>
+<p>A block with a <code>⚠</code> has no site&#39;s picture, since a site&#39;s code can only be expected to draw a block
+that fits.</p>
+<p>If a site&#39;s code cannot draw a block, the block stays a card with a quiet reason on its first row,
+and no <code>⚠</code>.</p>
+<h2 id='language'>Language</h2>
+<p>A package&#39;s words follow the document: set <code>lang</code> in its front matter (<code>lang: ru</code>, <code>lang: ru-RU</code>)
+and block labels, the block library and the form&#39;s labels show in that language, if the package has
+it. Otherwise they show in the language before the <code>-</code>, then English, then whatever the package has.
+With no <code>lang</code>, English. Changing <code>lang</code> changes them at once, and an open form keeps what you typed.
+Search in the library finds a block by its words in any language.</p>
+<p>Markise&#39;s own words stay English: Save, Cancel, the reasons it gives, and the sentence around a block&#39;s
+name. A field the package gives no label to shows its name, and a block without a view shows its name
+from the file.</p>
+<h2 id='limits'>Limits</h2>
+<ul>
+<li><strong>Site pictures are macOS only, on macOS 14 or later.</strong> On Windows, on Linux and on older macOS,
+native views, the form and everything else work, but there is no <strong>Show as on the Site</strong>: a block
+with no native view shows as a card.</li>
+<li><strong>A picture is not interactive.</strong> Clicks in it do not reach the site&#39;s code. A click puts the
+caret before or after the block.</li>
+<li><strong>A picture shows the block as it stands in the document.</strong> It is drawn again when the block
+changes. If you replace an image file on disk and leave the block&#39;s text alone, an older picture
+can go on showing until the block changes.</li>
+<li><strong>Exports use neither views nor pictures.</strong> HTML, PDF, PNG and Pandoc exports show a block&#39;s
+content with its name as a label, whichever view is on screen.</li>
+<li><strong>A package&#39;s code is kept apart.</strong> It runs only for a package you accepted, in a separate
+process with no network, and gets only the package&#39;s files and the block&#39;s own images.
+See <a href="updates-and-privacy.html">Updates and privacy</a>.</li>
+</ul>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/blocks.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

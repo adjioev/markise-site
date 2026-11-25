@@ -38,6 +38,8 @@
         <li><a href='themes.html'>Themes</a></li>
         <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
         <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html'>Blocks</a></li>
+        <li><a href='block-packages.html'>Making block packages</a></li>
         <li><a href='export.html'>Export</a></li>
         <li><a href='large-files.html'>Large files</a></li>
         <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
@@ -59,9 +61,11 @@ The current version is the first beta, <a href="https://github.com/adjioev/marki
 <tbody>
 <tr><td>macOS</td><td><code>markise-macos-universal.dmg</code></td><td>macOS 11 Big Sur or later, Apple silicon or Intel</td></tr>
 <tr><td>Windows</td><td><code>markise-windows-x86_64.zip</code></td><td>Windows 10 or 11, x86_64, a graphics driver with OpenGL 3</td></tr>
-<tr><td>Linux</td><td><code>markise-linux-x86_64.tar.gz</code></td><td>x86_64, glibc 2.35 or later (for example Ubuntu 22.04, Debian 12, Fedora 36 and newer), X11 or Wayland</td></tr>
+<tr><td>Linux</td><td><code>markise-x86_64.AppImage</code>, <code>markise_&lt;version&gt;_amd64.deb</code> or <code>markise-linux-x86_64.tar.gz</code></td><td>x86_64, glibc 2.35 or later (for example Ubuntu 22.04, Debian 12, Fedora 36 and newer), X11 or Wayland</td></tr>
 </tbody>
 </table></figure>
+<p>The AppImage and the <code>.deb</code> package are published from the release after 0.1.0-beta.1 on;
+0.1.0-beta.1 has the <code>.tar.gz</code> only.</p>
 <p>Each download also contains <code>markise-cli</code> (a command-line tool for HTML export and round-trip
 checks), the licences, <code>NOTICE</code> and <code>THIRD_PARTY/</code>.</p>
 <h3 id='check-the-download-optional'>Check the download (optional)</h3>
@@ -102,6 +106,25 @@ check that the app name is <code>markise.exe</code>, then click <strong>Run anyw
 <p>To open Markdown files with Markise, right-click a <code>.md</code> file → <strong>Open with → Choose another
 app</strong> → browse to <code>markise.exe</code>.</p>
 <h3 id='linux'>Linux</h3>
+<p>There are three downloads with the same program; pick one.</p>
+<p><strong>AppImage</strong> (any distribution): one file, nothing to install.</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>chmod</span> +x markise-x86_64.AppImage
+<span class='cm-def'>./markise-x86_64.AppImage</span>
+</code></pre>
+<p>The AppImage mounts itself with FUSE. If it stops with a message about FUSE, install the
+<code>fuse3</code> package (<code>sudo apt install fuse3</code> on Debian and Ubuntu), or start it with
+<code>./markise-x86_64.AppImage --appimage-extract-and-run</code>. To use <code>markise-cli</code> from the
+AppImage, make a link to it whose name starts with <code>markise-cli</code>:
+<code>ln -s ~/Applications/markise-x86_64.AppImage ~/.local/bin/markise-cli</code> (adjust the path).
+Tools such as AppImageLauncher or Gear Lever add the AppImage to your application menu.</p>
+<p><strong>Debian, Ubuntu and derivatives</strong> (<code>.deb</code>): installs <code>markise</code> and <code>markise-cli</code> into
+<code>/usr/bin</code>, with a menu entry, an icon and &quot;Open with&quot; support for Markdown files. Install it
+with apt, which also installs the libraries Markise needs:</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>sudo</span> apt install ./markise_<span class='cm-operator'>*</span>_amd64.deb
+</code></pre>
+<p>Remove it with <code>sudo apt remove markise</code>. The package does not add an apt repository, so
+updates are installed the same way from a newer download.</p>
+<p><strong>Archive</strong> (<code>.tar.gz</code>, any distribution):</p>
 <pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>tar</span> xzf markise-linux-x86_64.tar.gz
 <span class='cm-def'>cd</span> markise-<span class='cm-operator'>*</span>-linux-x86_64
 <span class='cm-def'>./markise</span>
@@ -110,8 +133,10 @@ app</strong> → browse to <code>markise.exe</code>.</p>
 <pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>mkdir</span><span class='cm-variable'> -p</span> <span class='cm-builtin'>~</span>/.local/bin <span class='cm-operator'>&amp;&amp;</span> <span class='cm-def'>cp</span> markise markise-cli <span class='cm-builtin'>~</span>/.local/bin/
 <span class='cm-def'>cp</span><span class='cm-variable'> -r</span> share <span class='cm-builtin'>~</span>/.local/
 </code></pre>
-<p>Markise needs OpenGL or OpenGL ES 3, libxkbcommon, and the Wayland or X11 client libraries;
-desktop systems normally have them. There is no AppImage, .deb or Flatpak yet.</p>
+<p>The AppImage and the archive use the libraries of your system: OpenGL or OpenGL ES 3 (or
+Vulkan), libxkbcommon, and the Wayland or X11 client libraries; desktop systems normally have
+them (the <code>.deb</code> lists them as dependencies). The file dialogs use the XDG desktop portal.
+There is no Flatpak yet.</p>
 <h2 id='first-launch'>First launch</h2>
 <ul>
 <li>The <strong>tutorial</strong> opens as a scratch document. Edit it freely: it is a copy, and your files are

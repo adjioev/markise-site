@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Making block packages · Markise guide</title>
+  <meta name='color-scheme' content='dark light'>
+  <meta name='theme-color' content='#1a1b26'>
+  <link rel='icon' href='../assets/favicon.svg' type='image/svg+xml'>
+  <link rel='icon' href='../assets/favicon-32.png' sizes='32x32' type='image/png'>
+  <link rel='stylesheet' href='../style.css'>
+</head>
+<body class='doc-page'>
+  <a class='skip' href='#write'>Skip to content</a>
+  <header class='doc-header'>
+    <nav class='nav wrap' aria-label='Main'>
+      <a class='brand' href='../index.html' aria-label='Markise home'>
+        <img src='../assets/markise-lockup-dark.svg' alt='Markise' width='185' height='44'>
+      </a>
+      <ul>
+        <li><a href='../index.html#features'>Features</a></li>
+        <li><a href='index.html'>Docs</a></li>
+        <li><a href='../index.html#download'>Download</a></li>
+        <li><a href='https://github.com/adjioev/markise'>GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class='doc-layout wrap'>
+    <nav class='doc-nav' aria-label='User guide'>
+      <details open>
+        <summary>User guide</summary>
+        <ul>
+        <li><a href='index.html'>Overview</a></li>
+        <li><a href='getting-started.html'>Getting started</a></li>
+        <li><a href='editing.html'>Editing</a></li>
+        <li><a href='folders-and-vaults.html'>Folders and vaults</a></li>
+        <li><a href='shortcuts.html'>Keyboard shortcuts</a></li>
+        <li><a href='themes.html'>Themes</a></li>
+        <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
+        <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html'>Blocks</a></li>
+        <li><a href='block-packages.html' aria-current='page'>Making block packages</a></li>
+        <li><a href='export.html'>Export</a></li>
+        <li><a href='large-files.html'>Large files</a></li>
+        <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
+        <li><a href='settings.html'>Settings</a></li>
+        <li><a href='updates-and-privacy.html'>Updates and privacy</a></li>
+        <li><a href='faq.html'>FAQ and troubleshooting</a></li>
+        </ul>
+      </details>
+    </nav>
+    <main id='write' class='doc-content'>
+<h1 id='making-block-packages'>Making block packages</h1>
+<p>A block package tells Markise about the blocks of your site: their fields, how they look, what an
+author can insert, and, on macOS, how your site&#39;s own code draws them. Markise knows six field
+types and four view kinds and nothing about your site: the rest is in the package.</p>
+<p>This page is for people who make packages. Authors want <a href="blocks.html">Blocks</a>. A complete package
+for a made-up recipe site, with a sample document, is in the repository under
+<a href="https://github.com/adjioev/markise/tree/main/examples/block-package"><code>examples/block-package</code></a>.</p>
+<h2 id='a-small-complete-package'>A small complete package</h2>
+<p>One block with a native view, styles, a script and an icon. These files are checked by a test, and
+it draws this block on macOS.</p>
+<p>File <code>package/manifest.json</code>:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span> <span class='cm-property'>&quot;format&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;markise-block-package/2&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;library&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;notes&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;version&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;1.0.0&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;blocks&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span><span class='cm-string'>&quot;note&quot;</span><span class='cm-bracket'>]</span> <span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/components/note/note.json</code>:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span>
+  <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Note&quot;</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;fields&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span>
+    <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;name&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;title&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;type&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;heading&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;level&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>3</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;min&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>0</span> <span class='cm-bracket'>},</span>
+    <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;name&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;body&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;type&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;text&quot;</span> <span class='cm-bracket'>}</span>
+  <span class='cm-bracket'>]</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/components/note/note.css</code>:</p>
+<pre class='md-fences md-end-block' lang='css'><code class='language-css cm-s-inner' lang='css'><span class='cm-attribute'>.note</span> <span class='cm-bracket'>{</span> <span class='cm-variable-3'>padding</span><span class='cm-bracket'>:</span> <span class='cm-number'>8</span><span class='cm-keyword'>px</span> <span class='cm-number'>12</span><span class='cm-keyword'>px</span><span class='cm-bracket'>;</span> <span class='cm-variable-3'>background</span><span class='cm-bracket'>:</span> <span class='cm-def'>rgb</span>(<span class='cm-number'>37</span><span class='cm-bracket'>,</span> <span class='cm-number'>99</span><span class='cm-bracket'>,</span> <span class='cm-number'>235</span>)<span class='cm-bracket'>;</span> <span class='cm-variable-3'>color</span><span class='cm-bracket'>:</span> <span class='cm-atom'>white</span><span class='cm-bracket'>;</span> <span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/components/note/note.js</code>:</p>
+<pre class='md-fences md-end-block' lang='js'><code class='language-js cm-s-inner' lang='js'><span class='cm-keyword'>export</span> <span class='cm-keyword'>default</span> <span class='cm-keyword'>function</span> <span class='cm-def'>draw</span><span class='cm-bracket'>(</span><span class='cm-variable'>block</span><span class='cm-bracket'>)</span> <span class='cm-bracket'>{</span>
+  <span class='cm-keyword'>const</span> <span class='cm-variable'>stripe</span> <span class='cm-operator'>=</span> <span class='cm-variable-3'>document</span><span class='cm-bracket'>.</span><span class='cm-def'>createElement</span><span class='cm-bracket'>(</span><span class='cm-string'>&quot;div&quot;</span><span class='cm-bracket'>);</span>
+  <span class='cm-variable'>stripe</span><span class='cm-bracket'>.</span>style<span class='cm-bracket'>.</span>cssText <span class='cm-operator'>=</span> <span class='cm-string'>&quot;height: 6px; background: rgb(220, 38, 38)&quot;</span><span class='cm-bracket'>;</span>
+  <span class='cm-variable'>block</span><span class='cm-bracket'>.</span><span class='cm-def'>append</span><span class='cm-bracket'>(</span><span class='cm-variable'>stripe</span><span class='cm-bracket'>);</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/editor/palette.json</code>:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span>
+  <span class='cm-property'>&quot;groups&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[{</span> <span class='cm-property'>&quot;id&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;text&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Text&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;blocks&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span><span class='cm-string'>&quot;note&quot;</span><span class='cm-bracket'>]</span> <span class='cm-bracket'>}],</span>
+  <span class='cm-property'>&quot;blocks&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;note&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;description&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;A short note&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;icon&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;pin&quot;</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>},</span>
+  <span class='cm-property'>&quot;presets&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span>
+    <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;id&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;note&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;block&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;note&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Note&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;keywords&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;remark aside&quot;</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;markdown&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;:::note</span><span class='cm-string-2'>\n\n</span><span class='cm-string'>Write the note here.</span><span class='cm-string-2'>\n\n</span><span class='cm-string'>:::</span><span class='cm-string-2'>\n</span><span class='cm-string'>&quot;</span> <span class='cm-bracket'>}</span>
+  <span class='cm-bracket'>]</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/editor/views.json</code>:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span> <span class='cm-property'>&quot;note&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;kind&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;callout&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;accent&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;blue&quot;</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>}</span>
+</code></pre>
+<p>File <code>package/assets/pin.svg</code>:</p>
+<pre class='md-fences md-end-block' lang='xml'><code class='language-xml cm-s-inner' lang='xml'>&lt;<span class='cm-tag'>svg</span> <span class='cm-attribute'>xmlns</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;http://www.w3.org/2000/svg&quot;</span> <span class='cm-attribute'>viewBox</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;0 0 10 10&quot;</span>&gt;&lt;<span class='cm-tag'>circle</span> <span class='cm-attribute'>cx</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;5&quot;</span> <span class='cm-attribute'>cy</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;5&quot;</span> <span class='cm-attribute'>r</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;4&quot;</span> <span class='cm-attribute'>fill</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;currentColor&quot;</span>/&gt;&lt;/<span class='cm-tag'>svg</span>&gt;
+</code></pre>
+<p>File <code>document/example.md</code>:</p>
+<pre class='md-fences md-end-block' lang='markdown'><code class='language-markdown cm-s-inner' lang='markdown'><span class='cm-header'># Example</span>
+
+:::note
+
+<span class='cm-header'>### Remember</span>
+
+This is a block.
+
+:::
+</code></pre>
+<p>Pack the <code>package</code> folder and put the archive and a binding next to the document:</p>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-variable'>COPYFILE_DISABLE</span><span class='cm-operator'>=</span><span class='cm-string'>1</span> <span class='cm-def'>tar</span><span class='cm-variable'> -czf</span> document/notes-1.0.0.tar.gz<span class='cm-variable'> -C</span> package .
+<span class='cm-def'>shasum</span><span class='cm-variable'> -a</span> 256 document/notes-1.0.0.tar.gz
+</code></pre>
+<p><code>document/blocks.config.json</code>, with the hash that printed:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span> <span class='cm-property'>&quot;library&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;notes&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;version&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;1.0.0&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;source&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;notes-1.0.0.tar.gz&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;sha256&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;&lt;64 hexadecimal digits&gt;&quot;</span> <span class='cm-bracket'>}</span>
+</code></pre>
+<p><code>COPYFILE_DISABLE=1</code> keeps macOS from adding its own extra files to the archive.</p>
+<h2 id='the-block-in-markdown'>The block in Markdown</h2>
+<p>An opener of at least three colons directly followed by a name, optionally arguments, and a closer
+with the same number of colons or more.</p>
+<ul>
+<li>A name is letters and digits of any script, <code>-</code> and <code>_</code>, starting with a letter or digit.</li>
+<li>Markers count at the top level of a document only, not inside a quote or a list.</li>
+<li>A block nests in another with a longer fence (<code>::::a</code>, then <code>:::b</code>).</li>
+<li>A heading, or an item in a list or a task list inside a block, can end in <code> {#id}</code>, a stable name
+that readers do not see. Markise keeps ids and gives a new answer one.</li>
+</ul>
+<h2 id='the-files'>The files</h2>
+<pre class='md-fences md-end-block' lang='text'><code class='language-text' lang='text'>manifest.json                  format, identity, the list of blocks
+components/&lt;name&gt;/&lt;name&gt;.json  the schema of one block
+components/&lt;name&gt;/&lt;name&gt;.css   optional: the block&#39;s styles
+components/&lt;name&gt;/&lt;name&gt;.js    optional: the block&#39;s script
+styles/styles.css              optional: styles for all blocks
+editor/palette.json            required: groups, descriptions and icons, presets
+editor/views.json              optional: native views
+assets/&lt;icon&gt;.svg              optional: icons
+anything else                  yours: fonts, images, more scripts
+</code></pre>
+<p>A package is valid as a whole or refused as a whole, with up to 32 problems listed by file. The
+author then sees <code>Block package problem</code> and blocks stay cards.</p>
+<h3 id='manifestjson'>manifest.json</h3>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>format</code></td><td>exactly <code>markise-block-package/2</code>. Anything else under that stem is refused as not supported, before any other key is read</td></tr>
+<tr><td><code>library</code></td><td>ASCII letters, digits, <code>-</code>, <code>_</code>, <code>.</code>, starting with a letter or digit</td></tr>
+<tr><td><code>version</code></td><td>the same, with <code>+</code> allowed. Only compared for equality</td></tr>
+<tr><td><code>blocks</code></td><td>every block, once. A <code>components/&lt;x&gt;/&lt;x&gt;.json</code> for a name not listed is an error</td></tr>
+<tr><td><code>authoring</code></td><td>optional. The dialect your site writes in, as a document&#39;s front matter would say it. <code>blocks-v3</code> turns on <a href="blocks.html#sections">sections</a></td></tr>
+<tr><td><code>htmlContract</code></td><td>optional, a whole number. Which markup your code expects of a block: <code>2</code> has a <code>&lt;div&gt;</code> as a block&#39;s root, and <code>1</code>, or none, or a number Markise does not know, a <code>&lt;section&gt;</code>. See <a href="#how-your-code-draws-a-block">The element</a></td></tr>
+</tbody>
+</table></figure>
+<p>Other keys are ignored, and so are files Markise does not read, such as <code>templates/&lt;name&gt;/&lt;name&gt;.json</code>.</p>
+<h3 id='the-schema-of-a-block'>The schema of a block</h3>
+<p><code>label</code>, optional <code>variants</code> (a name to a text; <code>&quot;&quot;</code> is the block with no variant), optional
+<code>argument</code> (see below), and <code>fields</code>. A <strong>text</strong> is a string or an object of strings per language,
+looked up as the document&#39;s <code>lang</code> tag, the part before its <code>-</code> (<code>ru-RU</code> finds <code>ru</code>), English, then
+the first there is; a document with no <code>lang</code> shows English. See
+<a href="blocks.html#language">Language</a> for what follows it.</p>
+<p>If the block has <code>variants</code> and its arguments name none of them, it is outside its schema.</p>
+<p><code>argument</code> says the block takes something in its opener, as in <code>:::figure lesson/three</code>. Its form then has
+a field for it, first, called by the argument&#39;s <code>label</code> (a text), or its <code>name</code> made readable, or
+<code>Argument</code>, with its <code>help</code> (a text) under it. Saving the form changes only those bytes of the opener.</p>
+<p>A block whose argument is missing, or does not match the <code>pattern</code> the schema gives, gets a <code>⚠</code> and counts as
+not filled in, so it keeps its native view and can be saved. <code>pattern</code> is a regular expression searched for in
+the argument, so anchor it with <code>^</code> and <code>$</code>. A pattern of more than 1 KiB, one that would compile too large, or
+one using look-around or backreferences refuses the package when it is validated, saying which. An argument of
+over 4 KiB does not match. If the schema also has <code>variants</code>, the arguments name a variant and this check does
+not apply. A preset&#39;s sample argument is checked like any other: a sample that matches shows no <code>⚠</code>, so an
+author may not notice it was left in.</p>
+<p>Every field has a <code>name</code> and a <code>type</code>, and may have <code>label</code>, <code>help</code> and, for a repeating field,
+<code>add_label</code>. A package adds no types of its own.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th><code>type</code></th><th>In the Markdown</th><th>Limits it can state</th></tr>
+</thead>
+<tbody>
+<tr><td><code>heading</code></td><td>one ATX heading; <code>level</code> 1 to 6</td><td><code>min</code></td></tr>
+<tr><td><code>text</code></td><td>paragraphs, and what no later field takes</td><td><code>min</code></td></tr>
+<tr><td><code>quote</code></td><td>one block quote</td><td><code>min</code></td></tr>
+<tr><td><code>list</code></td><td>one list</td><td><code>minItems</code>, <code>maxItems</code></td></tr>
+<tr><td><code>choices</code></td><td>one task list</td><td><code>minItems</code>, <code>maxItems</code>, <code>correct</code>, <code>ids</code></td></tr>
+<tr><td><code>image</code></td><td>paragraphs holding only images, one per line</td><td><code>min</code>, <code>max</code></td></tr>
+</tbody>
+</table></figure>
+<p><code>list</code>, <code>choices</code> and <code>image</code> are optional unless they state a minimum above 0; the others are
+required unless <code>min</code> is 0. The <code>correct</code> of <code>choices</code> is <code>exactly-one</code> or <code>at-least-one</code>, or an object with a rule per variant.
+<code>exactly-one</code> gives radio buttons, others check boxes. <code>ids</code> can only be <code>required</code>.</p>
+<p>An item of a <code>list</code> or <code>choices</code> field is its first line (its first paragraph). Markdown indented under
+it, such as a quote, another paragraph or an image, belongs to that item: it shows under it, moves
+and goes with it and is kept as written. Markise gives it no meaning. You edit it in the block&#39;s
+Markdown, Source or Side by Side; the form keeps it.</p>
+<p>Each body block goes to the first field at or after the last one filled that takes it. What fits
+nothing is listed for the author and never touched. A key with a value a form cannot honour, such
+as a <code>level</code> of 7, leaves the block with no form and a reason in the panel, and the block stays a
+card. A key Markise does not know is ignored.</p>
+<h3 id='palettejson'>palette.json</h3>
+<ul>
+<li><code>format</code>: optional, <code>1</code>.</li>
+<li><code>groups</code>: <code>id</code>, <code>label</code>, <code>blocks</code>. A block can be listed once.</li>
+<li><code>blocks</code>: a name to <code>description</code>, <code>when</code> and <code>icon</code>. <code>when</code> says when to reach for this block rather than
+another. Only <a href="#the-command-line">the reference</a> shows it.</li>
+<li><code>presets</code>: <code>id</code>, <code>block</code>, <code>label</code>, <code>keywords</code>, <code>markdown</code>. A block with no preset cannot be
+inserted from the library.</li>
+</ul>
+<p>A preset&#39;s <code>markdown</code> must parse as exactly one block of the name it says. Markise refuses it
+otherwise, at the moment of inserting. The <code>{#id}</code>s of its answers stay as you wrote them, as they belong to their
+field and not to the page, so <code>{#none}</code> stays <code>{#none}</code>. A heading&#39;s id is unique on a page and gets a number if the page has it already.</p>
+<p>A preset can also say how answers are chosen, with buttons: <code>widget: &quot;icon-choices&quot;</code>, <code>variant</code>,
+<code>field</code>, <code>answers</code> (each with <code>label</code>, <code>icon</code>, <code>exclusive</code>), <code>columns</code> and <code>field_label</code>. An <code>icon</code>
+here is the path of a file in the package. An answer&#39;s value is its <code>label</code>, the text it has in the
+Markdown.</p>
+<h3 id='sectionsjson'>sections.json</h3>
+<p><code>editor/sections.json</code> is optional, and says what your site makes of <a href="blocks.html#sections">sections</a>. Without it a document
+with sections still offers a new one in the block library, called <code>Section</code>.</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span>
+  <span class='cm-property'>&quot;format&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>1</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;en&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Part&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;fr&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Partie&quot;</span> <span class='cm-bracket'>},</span>
+  <span class='cm-property'>&quot;description&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;en&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;A new part of the page&quot;</span> <span class='cm-bracket'>},</span>
+  <span class='cm-property'>&quot;keywords&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;chapter&quot;</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;icon&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;flag&quot;</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;title_level&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>2</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;fields&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span>
+    <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;key&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;style&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Look&quot;</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;values&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;value&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;wide&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Wide&quot;</span> <span class='cm-bracket'>},</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;value&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;plain&quot;</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>]</span> <span class='cm-bracket'>},</span>
+    <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;key&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;kind&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Kind&quot;</span> <span class='cm-bracket'>}</span>
+  <span class='cm-bracket'>]</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>format</code></td><td>optional, <code>1</code></td></tr>
+<tr><td><code>label</code></td><td>text, what the library and the form call a section. Default <code>Section</code></td></tr>
+<tr><td><code>description</code>, <code>keywords</code></td><td>as for a block in the palette</td></tr>
+<tr><td><code>icon</code></td><td>a name, as a block&#39;s</td></tr>
+<tr><td><code>view</code></td><td>how sections look on screen, below</td></tr>
+<tr><td><code>fields</code></td><td>the metadata the form for a new section asks for, in this order, at most 19. None: it asks for none</td></tr>
+</tbody>
+</table></figure>
+<p><code>&quot;view&quot;</code> says how sections look: <code>{&quot;frame&quot;: true, &quot;accent&quot;: &quot;blue&quot;, &quot;numbered&quot;: true}</code>, each optional.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>frame</code></td><td><code>true</code>: each section is a card, with a rounded border, a faint ground, room inside and a gap between sections, around whatever is in it. Default <code>false</code>: sections are divided by a strong line</td></tr>
+<tr><td><code>accent</code></td><td>a colour&#39;s name, as in <a href="#views">Views</a>, for the line or border and the number. Default: a colour from the text&#39;s</td></tr>
+<tr><td><code>numbered</code></td><td><code>false</code>: a boundary says no number. Default <code>true</code></td></tr>
+</tbody>
+</table></figure>
+<p>Anything else in these keys refuses the package. This says nothing about what a site draws, and changes no byte of a document.</p>
+<p><code>title_level</code> is the level of the heading a new section starts with, a whole number from 1 to 6, default 2, for both the library&#39;s item and <strong>Insert After…</strong>, and the level a section&#39;s name comes from first. With <code>1</code> sections go by <code>#</code>, and a document&#39;s first <code>#</code> is no title apart. Anything else refuses the package.</p>
+<p>A field has a <code>key</code> (<code>[a-z][a-z0-9-]*</code>, not <code>id</code>, as the form has its own field for that), an optional <code>label</code>, and optional <code>values</code>,
+each with a <code>value</code> of one line up to 200 characters and an optional <code>label</code>. With <code>values</code> the form offers those; without, any one line.
+A field left empty is not written. If no field is filled, the section has no metadata block. This file says nothing about what a value
+means, and Markise checks a section&#39;s metadata in a file against it nowhere: it is only what the form offers.</p>
+<h3 id='views'>Views</h3>
+<p><code>editor/views.json</code> maps a block to a <code>kind</code>, with optional <code>accent</code>, <code>icon</code>, <code>fill</code> and <code>label</code>. A
+block without an entry has no native view.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th><code>kind</code></th><th>Looks</th></tr>
+</thead>
+<tbody>
+<tr><td><code>callout</code></td><td>a tint of the accent, with a bar on the left</td></tr>
+<tr><td><code>card</code></td><td>framed, with an accent top edge and the title in the accent</td></tr>
+<tr><td><code>choices</code></td><td>framed in the accent; answers with a radio button or check box</td></tr>
+<tr><td><code>media</code></td><td>no frame; pictures with their alt text as a caption</td></tr>
+</tbody>
+</table></figure>
+<p><code>accent</code> is one of slate, gray, red, orange, amber, yellow, green, teal, cyan, blue, indigo, purple,
+violet or pink, each with a light and a dark value, or <code>none</code>. Any other name means the theme&#39;s
+accent. The first row shows the block&#39;s <code>label</code>, with the variant&#39;s label after it. A block of over
+64 KiB stays a card.</p>
+<p>Three options make a view quieter. A page with many blocks reads better with its text first. Each
+is off by default, and a value of the wrong type refuses the package.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Looks</th></tr>
+</thead>
+<tbody>
+<tr><td><code>&quot;fill&quot;: false</code></td><td>no tint, no frame, a thin bar of the accent on the left. A marked answer&#39;s row has no tint, a title and the first row are in the text&#39;s colours. <code>media</code> has neither to begin with</td></tr>
+<tr><td><code>&quot;accent&quot;: &quot;none&quot;</code></td><td>neutral: thin lines in the theme&#39;s rule, labels and marks in its quiet text. With a <code>fill</code> a <code>callout</code> has a very light neutral ground</td></tr>
+<tr><td><code>&quot;label&quot;: false</code></td><td>no first row and no icon: the block&#39;s own heading is enough. The label still reaches a screen reader. A warning still gets its row</td></tr>
+</tbody>
+</table></figure>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span> <span class='cm-property'>&quot;note&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;kind&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;callout&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;accent&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;none&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;fill&quot;</span><span class='cm-bracket'>:</span> <span class='cm-atom'>false</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;label&quot;</span><span class='cm-bracket'>:</span> <span class='cm-atom'>false</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>}</span>
+</code></pre>
+<p>A block&#39;s buttons show when the pointer is on the block, when it holds the caret, or when one of them
+has the keyboard, and they take up no room otherwise.</p>
+<p>A <code>callout</code>, <code>card</code> or <code>choices</code> view can be practised in <a href="blocks.html#practice">Read</a>:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span>
+  <span class='cm-property'>&quot;question&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;kind&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;choices&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;practice&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;reveal&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span><span class='cm-string'>&quot;explanation&quot;</span><span class='cm-bracket'>]</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>},</span>
+  <span class='cm-property'>&quot;exercise&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;kind&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;card&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;practice&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;reveal&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span><span class='cm-string'>&quot;solution&quot;</span><span class='cm-bracket'>]</span> <span class='cm-bracket'>}</span> <span class='cm-bracket'>}</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<p><code>reveal</code> names the fields hidden until the reader asks for them. A block whose schema has a <code>choices</code>
+field is checked against its marks, and counts in the score. One with none needs something in <code>reveal</code>, shows it behind Show
+answer, and does not count. <code>reveal</code> cannot name the answers themselves, or a heading, as the outline
+shows every heading. A package that breaks any of this is refused, with a message naming the block and the field. A block with no
+<code>practice</code> has no Practice. Answers keep the rule of their schema, so ids stay as your <code>choices</code> field has them.</p>
+<p>With <code>&quot;default&quot;: true</code> beside <code>reveal</code>, a document holding a block of that view opens in <a href="blocks.html#read-and-edit">Read</a>, so that answers do not show until asked for. Authors reach editing through the switch in the status bar.</p>
+<h3 id='icons'>Icons</h3>
+<p>An icon is a name such as <code>pin</code>, which means the file <code>assets/pin.svg</code>. Without that file nothing
+is drawn and nothing is wrong. An icon the rules below refuse is treated the same way.</p>
+<p><code>fill=&quot;currentColor&quot;</code> makes an icon a mask that follows the theme; other colours stay. It is drawn
+at 128 by 128 whatever it declares. Refused:</p>
+<ul>
+<li>a file over 256 KiB;</li>
+<li>a DTD, <code>use</code> and <code>marker</code>;</li>
+<li>filters: <code>filter</code> and <code>fe*</code> elements, the <code>filter</code> attribute and CSS property;</li>
+<li><code>pattern</code>, masks and images, and dashed strokes;</li>
+<li>more than 4096 parts or 16 levels of nesting.</li>
+</ul>
+<h2 id='how-your-code-draws-a-block'>How your code draws a block</h2>
+<p>On macOS 14 and later, a block that fits its schema can be drawn as a picture by your own CSS and
+JavaScript, on the system&#39;s web engine. A block with a view gets this when the author switches to
+it. A block with no view shows it from the start. Where nothing can draw, the block is a card.</p>
+<p><strong>Styles:</strong> <code>styles/styles.css</code>, then <code>components/&lt;name&gt;/&lt;name&gt;.css</code>, whichever exist.</p>
+<p><strong>Script:</strong> <code>components/&lt;name&gt;/&lt;name&gt;.js</code>, an ES module. Its default export gets the block&#39;s element
+and may return a promise. The picture is taken when that resolves. Without a script the block draws
+from its styles.</p>
+<p><strong>The element</strong> comes from the fields, by type alone. With <code>&quot;htmlContract&quot;: 2</code> in the manifest its root is a
+<code>&lt;div&gt;</code> rather than this <code>&lt;section&gt;</code>, and nothing else changes. Select a block by <code>[data-component]</code>, never by its tag:</p>
+<pre class='md-fences md-end-block' lang='html'><code class='language-html cm-s-inner' lang='html'>&lt;<span class='cm-tag'>section</span> <span class='cm-attribute'>data-component</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;name&quot;</span> <span class='cm-attribute'>class</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;name&quot;</span> <span class='cm-attribute'>data-variant</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;word&quot;</span> <span class='cm-attribute'>data-argument</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;word&quot;</span>&gt;
+  &lt;<span class='cm-tag'>h2</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;title&quot;</span>&gt;…&lt;/<span class='cm-tag'>h2</span>&gt;                       <span class='cm-comment'>&lt;!-- heading, of its level --&gt;</span>
+  &lt;<span class='cm-tag'>div</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;body&quot;</span>&gt;&lt;<span class='cm-tag'>p</span>&gt;…&lt;/<span class='cm-tag'>p</span>&gt;&lt;/<span class='cm-tag'>div</span>&gt;               <span class='cm-comment'>&lt;!-- text --&gt;</span>
+  &lt;<span class='cm-tag'>blockquote</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;note&quot;</span>&gt;&lt;<span class='cm-tag'>p</span>&gt;…&lt;/<span class='cm-tag'>p</span>&gt;&lt;/<span class='cm-tag'>blockquote</span>&gt; <span class='cm-comment'>&lt;!-- quote --&gt;</span>
+  &lt;<span class='cm-tag'>ul</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;steps&quot;</span>&gt;&lt;<span class='cm-tag'>li</span> <span class='cm-attribute'>data-item</span>&gt;…&lt;/<span class='cm-tag'>li</span>&gt;&lt;/<span class='cm-tag'>ul</span>&gt;    <span class='cm-comment'>&lt;!-- list --&gt;</span>
+  &lt;<span class='cm-tag'>ul</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;answers&quot;</span> <span class='cm-attribute'>data-select</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;single&quot;</span>&gt;      <span class='cm-comment'>&lt;!-- choices: single or multiple --&gt;</span>
+    &lt;<span class='cm-tag'>li</span> <span class='cm-attribute'>data-item</span> <span class='cm-attribute'>data-option-id</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;a1&quot;</span> <span class='cm-attribute'>data-correct</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;true&quot;</span>&gt;…&lt;/<span class='cm-tag'>li</span>&gt;
+  &lt;/<span class='cm-tag'>ul</span>&gt;
+  &lt;<span class='cm-tag'>div</span> <span class='cm-attribute'>data-field</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;pictures&quot;</span>&gt;&lt;<span class='cm-tag'>img</span> <span class='cm-attribute'>src</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;…&quot;</span> <span class='cm-attribute'>alt</span><span class='cm-bracket'>=</span><span class='cm-string'>&quot;…&quot;</span>&gt;&lt;/<span class='cm-tag'>div</span>&gt; <span class='cm-comment'>&lt;!-- image --&gt;</span>
+&lt;/<span class='cm-tag'>section</span>&gt;
+</code></pre>
+<p><code>data-variant</code> is there when the arguments name a declared variant, and <code>data-argument</code> when the
+schema declares an <code>argument</code>. A field with nothing in it has no element. A block is drawn alone: no section of the
+page stands around it, so your styles for a block cannot ask for one. Text goes through the HTML
+export&#39;s sanitizer. Ids are not text.</p>
+<p><strong>The page around it:</strong> <code>&lt;html lang data-theme=&quot;light|dark&quot;&gt;</code>, with the block as the first element of
+a container as wide as the document&#39;s column. Outer margins are zero, and animations and transitions
+are off. The background is transparent, so what you do not paint is the document.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>On <code>&lt;html&gt;</code></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td><code>data-theme</code></td><td><code>light</code> or <code>dark</code>; also <code>color-scheme</code></td></tr>
+<tr><td><code>lang</code></td><td>the <code>lang</code> key of the document&#39;s front matter, if any</td></tr>
+<tr><td><code>--markise-background</code>, <code>--markise-text</code>, <code>--markise-link</code>, <code>--markise-accent</code>, <code>--markise-selection</code></td><td>the theme&#39;s colours</td></tr>
+<tr><td><code>--markise-font-size</code></td><td>the theme&#39;s body size in <code>px</code></td></tr>
+</tbody>
+</table></figure>
+<p><strong>What a page can reach.</strong> Your styles and scripts load the package&#39;s files by relative URL, and the
+block&#39;s <code>&lt;img&gt;</code> elements load the images it lists. Everything else gets nothing: no network, no other
+file, no inline scripts in the markup or <code>eval</code>, no workers, forms, new windows or dialogs, no way to
+call the editor. Clicks do not arrive. Every render is a fresh document, and web storage is not kept on
+disk or shared with another package or document folder.</p>
+<p><strong>Bounds.</strong></p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>One render</td><td>5 seconds, then it fails</td></tr>
+<tr><td>A picture</td><td>8192 pixels a side, 24 megapixels</td></tr>
+<tr><td>Files one render can ask for</td><td>512</td></tr>
+<tr><td>Waiting for styles, pictures and fonts</td><td>1.5 s, 1.5 s, 1 s, then the picture is taken as it stands</td></tr>
+</tbody>
+</table></figure>
+<p>A block that fails is a card with the reason on its first row, and is not tried again until its
+source, width, theme or scale changes. A picture is made again when any of those change, the package
+or the document&#39;s language included. It does not depend on the contents of an image file.</p>
+<h2 id='the-binding'>The binding</h2>
+<p><code>blocks.config.json</code>, found in the document&#39;s folder or the nearest folder above it, up to the home
+folder.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>library</code>, <code>version</code></td><td>must equal the manifest&#39;s</td></tr>
+<tr><td><code>source</code></td><td>a <code>.tar.gz</code> by a relative path below the binding&#39;s folder. No absolute paths, <code>~</code>, <code>..</code>, backslashes, colons or URLs. With links resolved it must stay inside the folder</td></tr>
+<tr><td><code>sha256</code></td><td>the hash of the archive, 64 hexadecimal digits</td></tr>
+</tbody>
+</table></figure>
+<p>An archive holds regular files and folders only. A link or device refuses it whole, and so do two
+names that differ only by case or Unicode form. A changed hash asks the author again, whatever the
+version says.</p>
+<h2 id='the-command-line'>The command line</h2>
+<p>Two commands of <code>markise-cli</code> let a person or a coding agent write correct blocks without opening the
+app. Neither draws anything, runs a package&#39;s code, uses the network or a helper, or asks for consent.</p>
+<h3 id='checking-a-document'>Checking a document</h3>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>markise-cli</span> blocks check lesson.md more/<span class='cm-operator'>*</span>.md
+</code></pre>
+<p>For each file this finds the binding as the app does, reads the archive it names, checks the hash, the
+identity and the package as a whole, and checks each block in memory. It writes nothing, and the
+store of accepted packages is not read or changed, so the archive has to be there even when the app
+still has a copy. Links are resolved first, as the app does when it opens a file, so a link to a file counts where that file lives.</p>
+<pre class='md-fences md-end-block' lang='text'><code class='language-text' lang='text'>lesson.md:13: tip: Not filled in yet: Text: Required
+lesson.md:35: question: Outside its schema: Answers 1: Has no id
+lesson.md:71: sidebar: Unknown block: The package has no block `sidebar`.
+lesson.md:77: Marker: `::: tip` is not a marker, so it stays text. ...
+files: 1, blocks: 9, problems: 4
+</code></pre>
+<p>A reason about one piece of a block has that piece&#39;s line; others have the opener&#39;s. The words of the
+reasons are those of the editor&#39;s <code>⚠</code>, field labels in the document&#39;s language.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Kind</th><th>Headline</th><th>Means</th></tr>
+</thead>
+<tbody>
+<tr><td><code>not-filled</code></td><td>Not filled in yet</td><td>a block with a view lacks something: a required field, enough items, a marked answer, an argument, or an argument of the form its <code>pattern</code> says</td></tr>
+<tr><td><code>structure</code></td><td>Outside its schema</td><td>content in no field, arguments naming no variant, an answer with no id or a repeated one, too many items or marks, any reason of a block with no view, or a block of over 64 KiB, which stays a card</td></tr>
+<tr><td><code>unknown-block</code></td><td>Unknown block</td><td>the package has no block of this name. In the editor this is a plain card with no <code>⚠</code></td></tr>
+<tr><td><code>no-form</code></td><td>No form</td><td>the package says something a form cannot honour, the panel&#39;s reason. The block stays a card</td></tr>
+<tr><td><code>marker</code></td><td>Marker</td><td>an opener with no closer, a closer with nothing to close, a line of three or more colons that is not of a marker&#39;s form, or a marker inside a quote or a list. In the editor these are text</td></tr>
+</tbody>
+</table></figure>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Exit code</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>every file is clean, or no binding applies to it</td></tr>
+<tr><td>1</td><td>at least one problem</td></tr>
+<tr><td>2</td><td>a usage error, a file that cannot be read, or a binding or package that cannot be used, whatever else was found</td></tr>
+</tbody>
+</table></figure>
+<p>A file no binding applies to gets a note and passes: nothing says which blocks it should have. Other
+files are still checked after an error. Missing blank lines around markers are not reported, since the
+parser does not need them.</p>
+<p><code>--json</code> prints this on stdout instead, except for a usage error, which is plain text on stderr:</p>
+<pre class='md-fences md-end-block' lang='json'><code class='language-json cm-s-inner' lang='json'><span class='cm-bracket'>{</span>
+  <span class='cm-property'>&quot;format&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;markise-blocks-check/1&quot;</span><span class='cm-bracket'>,</span>
+  <span class='cm-property'>&quot;files&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span>
+    <span class='cm-bracket'>{</span>
+      <span class='cm-property'>&quot;file&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;lesson.md&quot;</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;status&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;problems&quot;</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;note&quot;</span><span class='cm-bracket'>:</span> <span class='cm-atom'>null</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;error&quot;</span><span class='cm-bracket'>:</span> <span class='cm-atom'>null</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;binding&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;file&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;/site/blocks.config.json&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;library&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;notes&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;version&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;1.0.0&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;sha256&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;&lt;64 hexadecimal digits&gt;&quot;</span> <span class='cm-bracket'>},</span>
+      <span class='cm-property'>&quot;language&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;en&quot;</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;blocks&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>9</span><span class='cm-bracket'>,</span>
+      <span class='cm-property'>&quot;problems&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[</span>
+        <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;line&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>13</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;block_line&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>13</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;block&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;tip&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;kind&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;not-filled&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;headline&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Not filled in yet&quot;</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;reason&quot;</span><span class='cm-bracket'>:</span> <span class='cm-string'>&quot;Text: Required&quot;</span> <span class='cm-bracket'>}</span>
+      <span class='cm-bracket'>]</span>
+    <span class='cm-bracket'>}</span>
+  <span class='cm-bracket'>],</span>
+  <span class='cm-property'>&quot;package_notes&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>[],</span>
+  <span class='cm-property'>&quot;summary&quot;</span><span class='cm-bracket'>:</span> <span class='cm-bracket'>{</span> <span class='cm-property'>&quot;files&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>1</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;blocks&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>9</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;problems&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>1</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;errors&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>0</span><span class='cm-bracket'>,</span> <span class='cm-property'>&quot;unbound&quot;</span><span class='cm-bracket'>:</span> <span class='cm-number'>0</span> <span class='cm-bracket'>}</span>
+<span class='cm-bracket'>}</span>
+</code></pre>
+<ul>
+<li><code>package_notes</code> lists, once per binding, what a package says that this version of Markise does not
+read, such as a key a newer package adds to a field (<code>{&quot;binding&quot;: &quot;&lt;its blocks.config.json&gt;&quot;, &quot;note&quot;: &quot;...&quot;}</code>).
+Such keys are ignored; they refuse nothing and change no exit code. In text output they are lines
+<code>&lt;blocks.config.json&gt;: package note, ignored: ...</code>. The app lists them in the package&#39;s status menu.
+An unknown field <code>type</code> still refuses the package, naming the type.</li>
+<li><code>status</code> is <code>clean</code>, <code>problems</code>, <code>unbound</code> (with <code>note</code>) or <code>error</code> (with <code>error</code>).</li>
+<li><code>binding</code> is <code>null</code> when none applies. With an <code>error</code> it may hold only <code>file</code>, or be <code>null</code>.</li>
+<li><code>language</code> is <code>null</code> unless the file was checked.</li>
+<li><code>block</code> is <code>null</code> for a line that names no block; <code>block_line</code> is the opener&#39;s line, or the line itself.</li>
+<li>Characters a terminal would act on or hide are escaped in the strings as <code>\uXXXX</code>, and in text output as <code>\u{1b}</code>.</li>
+<li>Keys and values mean this for as long as <code>format</code> says <code>markise-blocks-check/1</code>. The wording of <code>reason</code> can change.</li>
+</ul>
+<h3 id='a-reference-for-authors'>A reference for authors</h3>
+<pre class='md-fences md-end-block' lang='sh'><code class='language-sh cm-s-inner' lang='sh'><span class='cm-def'>markise-cli</span> blocks docs<span class='cm-variable'> --package</span> blocks/notes-1.0.0.tar.gz<span class='cm-variable'> --lang</span> ru <span class='cm-operator'>&gt;</span> BLOCKS.md
+</code></pre>
+<p><code>--package</code> takes an archive or a package&#39;s folder. <code>--binding</code> takes a <code>blocks.config.json</code>, whose pin and
+identity are checked. With neither, it reads the binding nearest the current folder. The text of the
+package follows <code>--lang</code> as a document&#39;s <code>lang</code> would, English by default; the rest is English.</p>
+<p>It prints Markdown, made only from the package&#39;s data:</p>
+<ul>
+<li>a first line saying it is generated, from which version and hash, and the command that makes it again, as you typed it;</li>
+<li>each block in the palette&#39;s order, then those in no group by name, with its name, label, description, <code>when</code>, arguments
+and their pattern or variants, fields with their type and rules, what Practice hides, and each preset as an example;</li>
+<li>the general rules: the <code>:::</code> syntax, blank lines, the fence length for nesting, ids, and what <code>check</code> reports.</li>
+</ul>
+<p>A package&#39;s text is treated as data, since an agent may act on this page. Each piece stands on one line after a fixed lead-in, what
+would be Markdown is escaped, characters a terminal would act on or hide are written out, and a preset is in a fence no line of it can
+close, so it cannot pose as a heading, a fence or part of the reference. A first paragraph says that it is quoted. A package whose
+manifest names the sections dialect gets one more rule on them; others get nothing about sections.</p>
+<p>The same package gives the same bytes: no dates, nothing from the machine, so it can sit in a repository with small diffs. For a
+folder, the hash is that of the archive Markise packs from it in memory, which a <code>tar</code> of the same files
+would not match.</p>
+<h2 id='limits'>Limits</h2>
+<figure class='table-figure'><table>
+<thead>
+<tr><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>One JSON file</td><td>1 MiB</td></tr>
+<tr><td>Blocks in a package</td><td>512</td></tr>
+<tr><td>Fields in a block</td><td>256</td></tr>
+<tr><td>Palette groups</td><td>256</td></tr>
+<tr><td>Palette presets</td><td>2048</td></tr>
+<tr><td>A name (<code>library</code>, block, field, icon)</td><td>128 bytes</td></tr>
+<tr><td>A label, description or keyword text</td><td>4 KiB</td></tr>
+<tr><td>The Markdown of a preset</td><td>64 KiB</td></tr>
+<tr><td>The archive, compressed</td><td>32 MiB</td></tr>
+<tr><td>All files, unpacked</td><td>64 MiB</td></tr>
+<tr><td>One file, unpacked</td><td>32 MiB</td></tr>
+<tr><td>Entries in the archive</td><td>4096</td></tr>
+<tr><td>A path</td><td>1024 bytes, 16 levels, 255 bytes per name</td></tr>
+<tr><td>The binding file</td><td>64 KiB</td></tr>
+</tbody>
+</table></figure>
+
+      <p class='doc-edit'><a href='https://github.com/adjioev/markise/blob/main/docs/user/block-packages.md'>Edit this page on GitHub</a></p>
+    </main>
+  </div>
+  <footer class='footer'>
+    <div class='wrap'>
+      <img src='../assets/markise-mark-dark.svg' alt='' width='36' height='43' class='foot-mark'>
+      <div>
+        <p>Markise — the marquise of Markdown editors. © 2026 The Markise contributors.
+          Dual-licensed under MIT or Apache-2.0. This site uses no cookies, trackers or
+          third-party requests.</p>
+        <p class='trademarks'>Obsidian is a trademark of Dynalist Inc. Markise is not affiliated with or endorsed by Obsidian.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

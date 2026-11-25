@@ -38,6 +38,8 @@
         <li><a href='themes.html'>Themes</a></li>
         <li><a href='math-and-diagrams.html'>Math and diagrams</a></li>
         <li><a href='comments-and-suggestions.html'>Comments and suggestions</a></li>
+        <li><a href='blocks.html'>Blocks</a></li>
+        <li><a href='block-packages.html'>Making block packages</a></li>
         <li><a href='export.html'>Export</a></li>
         <li><a href='large-files.html'>Large files</a></li>
         <li><a href='saving-and-recovery.html'>Saving and recovery</a></li>
@@ -139,6 +141,78 @@ still in the menu.</p>
 </table></figure>
 <p>Add Row Above, Add Column Before and After, Delete Column and the column alignments have no
 default key.</p>
+<h2 id='blocks'>Blocks</h2>
+<p>Delete Block works on any block. The other block commands need a block package in use, and the section commands a document with <a href="blocks.html#sections">sections</a>. See <a href="blocks.html">Blocks</a>.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Command</th><th>macOS</th><th>Windows and Linux</th></tr>
+</thead>
+<tbody>
+<tr><td>Insert Block… (or <code>/</code> on an empty line)</td><td>Alt+Cmd+B</td><td>Ctrl+Alt+B</td></tr>
+<tr><td>Edit Block…</td><td>Shift+Cmd+E</td><td>Ctrl+Shift+E</td></tr>
+<tr><td>Move Block Up / Down</td><td>Alt+Cmd+↑ / ↓</td><td>Ctrl+Shift+↑ / ↓</td></tr>
+<tr><td>Delete Block</td><td>Alt+Cmd+⌫</td><td>Ctrl+Shift+Delete</td></tr>
+<tr><td>Move Section Up / Down</td><td>Shift+Alt+Cmd+↑ / ↓</td><td>Ctrl+Shift+Alt+↑ / ↓</td></tr>
+<tr><td>A section&#39;s menu, on its row in the outline</td><td>Shift+F10</td><td>Shift+F10</td></tr>
+<tr><td>Delete Section</td><td>Shift+Alt+Cmd+⌫</td><td>Ctrl+Shift+Alt+Backspace</td></tr>
+<tr><td>Switch This Block&#39;s View</td><td>Shift+Cmd+M</td><td>Ctrl+Shift+M</td></tr>
+<tr><td>Switch All Blocks&#39; Views</td><td>Shift+Alt+Cmd+M</td><td>Ctrl+Shift+Alt+M</td></tr>
+<tr><td>Read Mode</td><td>Shift+Alt+Cmd+Y</td><td>Ctrl+Shift+Alt+Y</td></tr>
+</tbody>
+</table></figure>
+<h3 id='inside-a-block'>Inside a block</h3>
+<p>In a block&#39;s native view.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>Where</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td>Tab / Shift+Tab</td><td>any field</td><td>next / previous field</td></tr>
+<tr><td>Return</td><td>a list item or answer</td><td>what follows the caret goes to a new item after it</td></tr>
+<tr><td>Return</td><td>an empty last item</td><td>removes it, and the caret stays at the end of the one before</td></tr>
+<tr><td>Return</td><td>a heading</td><td>next field</td></tr>
+<tr><td>Return</td><td>text, a quote</td><td>new paragraph</td></tr>
+<tr><td>Shift+Return</td><td>text, a quote</td><td>line break in the paragraph</td></tr>
+<tr><td>Backspace, Delete</td><td>an empty item</td><td>removes it, unless it is the only one</td></tr>
+<tr><td>Backspace</td><td>between two paragraphs of one text field</td><td>joins them</td></tr>
+<tr><td>Esc</td><td>while dragging a block</td><td>cancels the drag</td></tr>
+</tbody>
+</table></figure>
+<h3 id='the-block-library'>The block library</h3>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td>↑ / ↓</td><td>previous / next row</td></tr>
+<tr><td>Return</td><td>inserts the row; with no row matching, closes and types what you typed</td></tr>
+<tr><td>/</td><td>right after the first <code>/</code>: closes and types one <code>/</code></td></tr>
+<tr><td>Esc, or Backspace with nothing typed</td><td>closes</td></tr>
+</tbody>
+</table></figure>
+<h3 id='the-block-form'>The block form</h3>
+<p>While the keyboard is in the form. Other document commands wait until it closes.</p>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Command</th><th>macOS</th><th>Windows and Linux</th></tr>
+</thead>
+<tbody>
+<tr><td>Save the form</td><td>Cmd+Return or Cmd+S</td><td>Ctrl+Enter or Ctrl+S</td></tr>
+<tr><td>Cancel</td><td>Esc or Cmd+W</td><td>Esc or Ctrl+W</td></tr>
+<tr><td>Move a row up / down</td><td>Alt+↑ / Alt+↓</td><td>Alt+↑ / Alt+↓</td></tr>
+</tbody>
+</table></figure>
+<h3 id='the-image-picker'>The image picker</h3>
+<figure class='table-figure'><table>
+<thead>
+<tr><th>Key</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td>Arrow keys</td><td>move through the images</td></tr>
+<tr><td>Return</td><td>uses the selected image</td></tr>
+<tr><td>Esc</td><td>closes</td></tr>
+</tbody>
+</table></figure>
 <h2 id='format'>Format</h2>
 <figure class='table-figure'><table>
 <thead>
