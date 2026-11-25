@@ -115,8 +115,9 @@ can be created this way, and never outside the opened folder.</p>
 keys, and press <kbd>Enter</kbd> or <kbd>Tab</kbd> to insert the link; <kbd>Esc</kbd> closes the
 list. In an Obsidian vault Markise inserts a wikilink (unless the vault is set to Markdown
 links); in a plain folder it inserts a Markdown link such as <code>[Tides](Tides.md)</code>.</p>
-<p>Not supported yet: embeds (<code>![[note]]</code> is shown as text) and block references (<code>[[note#^id]]</code>
-opens the note without scrolling).</p>
+<p>Embeds of images (<code>![[photo.png]]</code>) show the image; see <a href="editing.html#images">Images</a>. Not
+supported yet: embeds of notes (<code>![[note]]</code> is shown as a link to the note, not its text) and
+block references (<code>[[note#^id]]</code> opens the note without scrolling).</p>
 <h2 id='obsidian-vaults'>Obsidian vaults</h2>
 <p>A folder is treated as an Obsidian vault when it contains a <code>.obsidian</code> folder. Markise reads
 only <code>.obsidian/app.json</code>, and only these settings from it: the link format (wikilinks or

@@ -107,6 +107,9 @@ that request comes from Pandoc, not from Markise.</p>
 settings yet, and the Pandoc path cannot be set by hand — install Pandoc where Markise looks
 for it.</li>
 <li><strong>PDF and PNG show math and diagrams as source text.</strong> Use HTML export to get them drawn.</li>
+<li><strong>Image embeds</strong> (<code>![[photo.png|300]]</code>) export as images, found as in the editor. HTML keeps
+the size asked for (<code>width</code>/<code>height</code>); PDF, PNG and Pandoc formats show the image at its own
+size. An embed of a note is a link in HTML and its name as text elsewhere.</li>
 <li><strong>PDF and PNG use local images only.</strong> Remote images (<code>https://…</code>) are not downloaded and
 <code>data:</code> images are not supported; a placeholder with the image&#39;s alt text is drawn instead.</li>
 <li>Fonts bundled with an imported CSS theme are not used in PDF and PNG export (installed system

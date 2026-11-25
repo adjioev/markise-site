@@ -61,7 +61,8 @@ not updated when a file is renamed.</li>
 <li><strong>Editing:</strong> paste inserts plain text (rich text is not converted to Markdown); the text being
 composed with an input method (IME) is not shown inline until it is committed; there is no
 spell checker.</li>
-<li><strong>Wikilinks:</strong> embeds (<code>![[note]]</code>) and block references (<code>#^id</code>) are not supported.</li>
+<li><strong>Wikilinks:</strong> note embeds (<code>![[note]]</code>, shown as a link) and block references (<code>#^id</code>) are
+not supported; image embeds (<code>![[photo.png]]</code>) are.</li>
 <li><strong>Diagrams:</strong> of the Mermaid diagram types, only flowcharts and sequence diagrams are drawn.</li>
 <li><strong>Export:</strong> no export settings; PDF and PNG show math and diagrams as source text and use
 local images only; the Pandoc path cannot be set by hand (<a href="export.html#limitations-in-the-beta">Export</a>).</li>
@@ -69,8 +70,8 @@ local images only; the Pandoc path cannot be set by hand (<a href="export.html#l
 <li><strong>Shortcuts:</strong> changed in <code>settings.json</code> only; file and view commands cannot be rebound
 (<a href="shortcuts.html#change-a-shortcut">Keyboard shortcuts</a>).</li>
 <li><strong>Updates:</strong> Markise tells you about a new version but never installs it.</li>
-<li><strong>Linux:</strong> 0.1.0-beta.1 is a tarball only; later releases add an AppImage and a <code>.deb</code>
-package. No Flatpak and no apt repository.</li>
+<li><strong>Linux:</strong> no Flatpak and no apt repository. The AppImage and the <code>.deb</code> package are
+published since 0.1.0-beta.2 (0.1.0-beta.1 was a tarball only).</li>
 </ul>
 <h2 id='is-markise-free-where-is-the-source'>Is Markise free? Where is the source?</h2>
 <p>Markise is free and open source, dual-licensed under MIT or Apache-2.0. The source, issues and
